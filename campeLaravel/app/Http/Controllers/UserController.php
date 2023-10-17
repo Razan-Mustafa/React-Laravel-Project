@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoryc;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class CategorycController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class CategorycController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**
@@ -41,21 +44,22 @@ class CategorycController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categoryc  $categoryc
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoryc $categoryc)
+    public function show($id)
     {
-        //
+        $user = User::where('id',$id)->get();
+        return response()->json($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categoryc  $categoryc
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoryc $categoryc)
+    public function edit($id)
     {
         //
     }
@@ -64,21 +68,38 @@ class CategorycController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categoryc  $categoryc
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoryc $categoryc)
+    public function update(Request $request, $user)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => ['required'],
+                'email' => ['required'],
+                'passowrd' => ['required'],
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all() ]);
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->passowrd = $request->passowrd;
+        $user->update();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categoryc  $categoryc
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoryc $categoryc)
+    public function destroy($id)
     {
         //
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -14,7 +15,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        return response()->json($reviews);
+        
     }
 
     /**
@@ -35,7 +38,26 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'comment' => ['required'],
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all() ]);
+        }
+
+
+        $review = new Review;
+        $review->comment = $request->comment;
+        $review->rate = $request->rate;
+        $review->date = $request->date;
+        $review->user_id = $request->user_id;
+        $review->package_id = $request->package_id;
+        $review->save();
     }
 
     /**
@@ -44,9 +66,10 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show($id)
     {
-        //
+        $reviews = Review::where('package_id',$id)->get();
+        return response()->json($reviews);
     }
 
     /**
@@ -69,7 +92,24 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all() ]);
+        }
+
+        $review->comment = $request->comment;
+        $review->rate = $request->rate;
+        $review->date = $request->date;
+        $review->user_id = $request->user_id;
+        $review->package_id = $request->package_id;
+        $review->update();
     }
 
     /**
@@ -80,6 +120,6 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
     }
 }
