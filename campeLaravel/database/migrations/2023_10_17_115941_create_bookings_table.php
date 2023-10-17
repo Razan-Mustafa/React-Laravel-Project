@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('date');
+            $table->integer('phone');
+            $table->string('address');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('package_id');
             $table->timestamps();
