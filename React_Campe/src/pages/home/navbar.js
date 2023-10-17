@@ -26,7 +26,7 @@ const mybackground = {
 };
 
 const mytext = {
-  color: "#297cbb",
+  color: "#637E4C",
 };
 const mytext2 = {
   color: "white",
