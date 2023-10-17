@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('package_id');
             $table->text('comment');
-
+            $table->integer('rate')->nullable();
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
