@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "linkText": "Home",
+    "link": "/"
+  },
+  {
+    "id": 3,
+    "linkText": "Services",
+    "link": "/services"
+  },
+  {
+    "id": 5,
+    "linkText": "Doctors",
+    "link": "/all-category"
+  },
+  {
+    "id": 4,
+    "linkText": "About Us",
+    "link": "/about"
+  },
+  {
+    "id": 5,
+    "linkText": "Contact Us",
+    "link": "/contact"
+  },
+  {
+    "id": 6,
+    "linkText": "FAQ's",
+    "link": "/faqs"
+  }
+]

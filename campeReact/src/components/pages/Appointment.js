@@ -1,0 +1,33 @@
+import React, { Component, Fragment } from 'react';
+import MetaTags from "react-meta-tags";
+import Header from '../layouts/Headertwo';
+import Breadcrumbs from '../layouts/Breadcrumbs';
+import Footer from '../layouts/Footer';
+import Content from '../sections/appointment/Content';
+
+const pagelocation = "Appointment";
+
+class Appointment extends Component {
+    render() {
+        return (
+            <Fragment>
+                <MetaTags>
+                    <title>Docfind - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                    <meta
+                        name="description"
+                        content="#"
+                    />
+                </MetaTags>
+                <Header />
+                <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
+                <Content
+                    catId={this.props.match.params.idcat}
+                    detailId={this.props.match.params.id}
+                />
+                <Footer />
+            </Fragment>
+        );
+    }
+}
+
+export default Appointment;
