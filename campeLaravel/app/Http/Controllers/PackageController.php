@@ -14,8 +14,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::all();
-        return response()->json($packages);
+        // $packages = Package::all();
+        // return response()->json($packages);
     }
 
     /**
@@ -45,9 +45,10 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show(Package $package)
+    public function show($id)
     {
-        //
+        $packages = Package::with('product')->where('id', $id)->get();
+        return response()->json($packages);
     }
 
     /**

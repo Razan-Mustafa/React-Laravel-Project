@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Aboutus from "./pages/aboutus";
 import Profile from "./pages/profile/Profile";
-import SingleProduct from "./pages/singleproduct";
+import SingleProduct from "./pages/SingleProduct/singleproduct";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
