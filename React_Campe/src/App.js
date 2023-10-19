@@ -10,7 +10,7 @@ import Booking from "./pages/booking";
 import Aboutus from "./pages/aboutus";
 import Profile from "./pages/profile/Profile";
 import SingleProduct from "./pages/SingleProduct/singleproduct";
-import Yacht from "./pages/products/yacht";
+import Category from "./pages/products/single_category";
 import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
@@ -40,8 +40,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/packages" element={<Yacht />} /> */}
 
-        <Route path="/packages/:id" element={<Yacht />} />
-        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/category/:id" element={<Category />} />
+        <Route path="/package/:id" element={<SingleProduct />} />
         {/* <Route path="/product" element={<Product />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

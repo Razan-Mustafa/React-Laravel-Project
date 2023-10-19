@@ -8,7 +8,7 @@ function Category() {
   const [category, setCategory] = useState([]);
 
   const handleButtonClick = (id) => {
-    navigate(`/packages/${id}`);
+    navigate(`/category/${id}`);
   };
 
   useEffect(() => {
