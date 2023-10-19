@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 // import Reviews from "./reviews";
 import Reviews from "./ReviewRedux/componentReview";
 import Details from "./productDetail";
+import Slider from './products_slider/products_slider'
 
 function SingleProduct() {
   let { id } = useParams();
@@ -187,9 +188,9 @@ function SingleProduct() {
         </nav>
       </div>
       {/* <!-- End Breadcrumb --> */}
-      <div class="mb-8">
+      {/* <div class="mb-8"> */}
         {/* <!-- Images Carousel --> */}
-        <div
+        {/* <div
           class="js-slick-carousel u-slick u-slick__img-overlay"
           data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
           data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
@@ -262,14 +263,17 @@ function SingleProduct() {
               backgroundPosition: "center", // Center the image horizontally and vertically
             }}
           ></div>
-        </div>
+        </div> */}
         {/* <!-- End Images Carousel --> */}
-      </div>
+      {/* </div> */}
 
+        
+
+      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-xl-9">
-      <Details/>
+          <Details/>
             <div class="d-block d-md-flex flex-center-between align-items-start mb-3">
               <div class="mb-3">
                 {/* <div class="d-block d-md-flex flex-horizontal-center mb-2 mb-md-0">
@@ -499,8 +503,7 @@ function SingleProduct() {
                 </div>
 
                 <div class="p-4 m-1">
-                  {/* <!-- End Input -->
-                                      <!-- Input --> */}
+               
                   <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
                     From - To
                   </span>
@@ -556,7 +559,7 @@ function SingleProduct() {
                     </div>
                   </div>
 
-                  {/* <!-- End Input --> */}
+                 
                   <div class="text-center">
                     <a
                       href="../yacht/yacht-booking.html"
