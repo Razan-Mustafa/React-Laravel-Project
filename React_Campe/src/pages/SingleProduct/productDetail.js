@@ -19,7 +19,7 @@ const ProductDetails = ({ id }) => {
             console.log(response.data[0].name)
         })
         .catch((error) => console.error(error));
-    };
+  };
 
     getProductDetails();
   }, [id]);
@@ -27,7 +27,6 @@ const ProductDetails = ({ id }) => {
 
   return (
     <div className="sigma_team style-17 mb-0">
-      <br></br><br></br><br></br>
       <div className="row no-gutters">
         <div className="col-md-6">
           <div className="sigma_team-thumb">
@@ -53,7 +52,7 @@ const ProductDetails = ({ id }) => {
           
               <span>
               {/* <FontAwesomeIcon icon={faMoneyBill} /> */}
-                <i className="fas fa-dollar-sign" /> Rent Price: {details.price} JOD
+                <i className="fas fa-dollar-sign" /> Rent Price: {details.price} JOD per day
               </span>
             </div>
           </div>
