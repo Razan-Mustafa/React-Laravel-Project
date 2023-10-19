@@ -16,7 +16,7 @@ function Booking() {
   const end = endDate.toISOString().slice(0, 10);
   const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-    const [bookingData, setBookingData] = useState([0]);
+    // const [bookingData, setBookingData] = useState([0]);
 
 
   // console.log(startDate);
@@ -32,7 +32,7 @@ function Booking() {
           const book = response.data.filter(
             (carts) => carts.id === cart[0].yachtId
           );
-          setBookingData(book);
+          // setBookingData(book);
           console.log(book);
         } else {
         }
@@ -108,14 +108,14 @@ function Booking() {
                     <li class="d-flex justify-content-between py-2">
                       <span class="font-weight-medium">Yacht Name: </span>
                       <span class="text-secondary text-right">
-                        {bookingData[0].name}
+                        {/* {bookingData[0].name} */}
                       </span>
                     </li>
 
                     <li class="d-flex justify-content-between py-2">
                       <span class="font-weight-medium">Location</span>
                       <span class="text-secondary text-right">
-                        {bookingData[0].location}
+                        {/* {bookingData[0].location} */}
                       </span>
                     </li>
 
@@ -184,14 +184,14 @@ localStorage.removeItem("cart");
                   <a href="#" class="d-block mb-2">
                     <img
                       className="img-fluid rounded-sm"
-                      src={bookingData[0].image1} // Corrected attribute name from avater to avatar
+                      // src={bookingData[0].image1} // Corrected attribute name from avater to avatar
                       alt="Image-Description"
                     />
                   </a>
                   {/* {eventData.name} */}
                   <div class="flex-horizontal-center text-gray-1">
                     <i class="icon flaticon-pin-1 mr-2 font-size-15"></i>{" "}
-                    {bookingData[0].location}
+                    {/* {bookingData[0].location} */}
                   </div>
                 </div>
                 <div id="basicsAccordion">
