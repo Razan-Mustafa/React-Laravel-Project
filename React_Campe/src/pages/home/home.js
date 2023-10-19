@@ -52,7 +52,7 @@ return (
           </h2>
         </div>
         <div className="row mb-1">
-          {last6Packages.map((packages) => (
+          {last6Packages && last6Packages.map((packages) => (
             <>
               <div className="col-md-4 col-xl-2">
                 <div className="mb-5 mb-xl-0">

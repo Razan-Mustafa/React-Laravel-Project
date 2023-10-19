@@ -14,8 +14,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        // $packages = Package::all();
-        // return response()->json($packages);
+        $packages = Package::all();
+        return response()->json($packages);
     }
 
     /**
