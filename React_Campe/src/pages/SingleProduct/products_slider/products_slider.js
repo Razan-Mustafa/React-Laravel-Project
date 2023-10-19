@@ -164,8 +164,11 @@ import './style.css'
 
 function ImageGallery({ package_id }) {
     const [slideIndex, setSlideIndex] = useState(1);
-    // const [images, setImages] = useState([]);
     const [products, setProducts] = useState([]);
+    // useEffect(() => {
+    //     // Show the slides when slideIndex changes
+    //     showSlides(slideIndex);
+    // }, [slideIndex]);
 
     useEffect(() => {
         // Fetch data when package_id changes
@@ -183,21 +186,10 @@ function ImageGallery({ package_id }) {
         }
     }, [package_id]);
 
-    // useEffect(() => {
-    //     // After fetching products, update the images
-    //     if (products && products.length > 0) {
-    //         const productImages = products.map(product => ({
-    //             src: process.env.PUBLIC_URL + product.image,
-    //             alt: product.name,
-    //         }));
-    //         setImages(productImages);
-    //     }
-    // }, [products]);
-
     useEffect(() => {
-        // Show the slides when slideIndex changes
         showSlides(slideIndex);
-    }, [slideIndex]);
+    }, [products, slideIndex]);
+
 
     const showSlides = (n) => {
         const slides = document.getElementsByClassName('mySlides');
