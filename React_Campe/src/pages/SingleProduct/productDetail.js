@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Rating } from "../../helper";
 import "./ReviewRedux/style.css";
+import Slider from './products_slider/products_slider';
+
 
 const ProductDetails = ({ id }) => {
   const [details, setDetails] = useState([]);
@@ -21,19 +23,18 @@ const ProductDetails = ({ id }) => {
 
     getProductDetails();
   }, [id]);
+  let package_id = 1;
 
   return (
     <div className="sigma_team style-17 mb-0">
+      <br></br><br></br><br></br>
       <div className="row no-gutters">
-        <div className="col-md-4">
+        <div className="col-md-6">
           <div className="sigma_team-thumb">
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/img/${details.image}`}
-              alt={details.name}
-            />
+             <Slider package_id = {package_id}/>
           </div>
         </div>
-        <div className="col-md-8">
+        <div className="col-md-6">
           <div className="sigma_team-body">
             <h5>
               {details.name}
@@ -47,20 +48,12 @@ const ProductDetails = ({ id }) => {
             </div>
             <div className="sigma_team-info mt-4">
               <span>
-                <i className="fal fa-phone" />
-                {details.phone}
+              <i className="fas fa-user" /> {details.number_of_person} Persons
               </span>
+          
               <span>
-                <i className="fal fa-at" />
-                {details.email}
-              </span>
-              <span>
-                <i className="fal fa-building" />
-                {details.location}
-              </span>
-              <span>
-                <i className="fal fa-money-bill" />
-                Service Price: {details.price} JOD
+              {/* <FontAwesomeIcon icon={faMoneyBill} /> */}
+                <i className="fas fa-dollar-sign" /> Rent Price: {details.price} JOD
               </span>
             </div>
           </div>
