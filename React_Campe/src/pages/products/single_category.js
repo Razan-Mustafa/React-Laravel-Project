@@ -23,7 +23,7 @@ function Packages() {
   const navigate = useNavigate();
 
   const handleButtonClick = (id) => {
-    navigate(`/packages/${id}`);
+    navigate(`/package/${id}`);
   };
 
   useEffect(() => {
@@ -262,7 +262,7 @@ function Packages() {
                                 <div className="col-md-5 col-xl-4">
                                   <div className="product-item__header">
                                     <div className="position-relative">
-                                      <a href={`/products/${packages.id}`}>
+                                      <a href={`/package/${packages.id}`}>
                                         <div
                                           className="js-slide bg-img-hero min-height-300 "
                                           style={{
@@ -355,7 +355,7 @@ function Packages() {
                                       </div>
                                       <div className="d-flex justify-content-center justify-content-md-start justify-content-xl-center">
                                         <a
-                                          href={`/products/${packages.id}`}
+                                          href={`/package/${packages.id}`}
                                           className="btn btn-outline-primary d-flex align-items-center justify-content-center font-weight-bold min-height-50 border-radius-3 border-width-2 px-2 px-5 py-2"
                                         >
                                           View Detail

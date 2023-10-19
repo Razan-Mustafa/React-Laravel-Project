@@ -25,6 +25,8 @@ function Home(){
               `http://127.0.0.1:8000/api/packages`
             );
             setPackages(response.data);
+            console.log(response.data);
+            console.log('tesrtttttttttttt');
           } catch (error) {
             console.error("Error fetching data:", error);
             // Handle the error as needed, e.g., show an error message.
@@ -52,7 +54,7 @@ return (
           </h2>
         </div>
         <div className="row mb-1">
-          {last6Packages.map((packages) => (
+          {last6Packages && last6Packages.map((packages) => (
             <>
               <div className="col-md-4 col-xl-2">
                 <div className="mb-5 mb-xl-0">
@@ -60,7 +62,7 @@ return (
                     <div className="color-hover py-4 px-3 bg-gray-4 rounded-xs text-center transition-3d-hover shadow-hover-2">
                       <i className="flaticon-camping mr-3 text-brown-light font-size-60"></i>
                       <h6 className="font-size-17 text-gray-3 font-weight-bold">
-                        {/* Fitness center */}
+                        Fitness center
                         {packages.name}
                         <p>{packages.price} JOD </p>
                       </h6>
