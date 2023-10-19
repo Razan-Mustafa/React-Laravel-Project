@@ -3,6 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Rating } from "../../helper";
 import "./ReviewRedux/style.css";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+
 
 const ProductDetails = ({ id }) => {
   const [details, setDetails] = useState([]);
@@ -59,8 +62,8 @@ const ProductDetails = ({ id }) => {
                 {details.location}
               </span>
               <span>
-                <i className="fal fa-money-bill" />
-                Service Price: {details.price} JOD
+              {/* <FontAwesomeIcon icon={faMoneyBill} /> */}
+                Rent Price: {details.price} JOD
               </span>
             </div>
           </div>

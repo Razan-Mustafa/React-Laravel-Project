@@ -266,10 +266,10 @@ function SingleProduct() {
         {/* <!-- End Images Carousel --> */}
       </div>
 
-      <Details/>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-xl-9">
+      <Details/>
             <div class="d-block d-md-flex flex-center-between align-items-start mb-3">
               <div class="mb-3">
                 {/* <div class="d-block d-md-flex flex-horizontal-center mb-2 mb-md-0">
