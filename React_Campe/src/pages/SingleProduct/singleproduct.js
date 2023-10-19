@@ -559,7 +559,7 @@ function SingleProduct() {
                     </div>
                   </div>
 
-                 
+                  {/* <!-- End Input --> */}
                   <div class="text-center">
                     <a
                       href="../yacht/yacht-booking.html"
