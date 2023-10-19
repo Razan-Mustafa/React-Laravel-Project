@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Reviews from "./reviews";
+// import Reviews from "./reviews";
+import Reviews from "./ReviewRedux/componentReview";
+import Details from "./productDetail";
 
 function SingleProduct() {
   let { id } = useParams();
@@ -49,44 +50,40 @@ function SingleProduct() {
         // Handle error if needed
       }
     };
-  
+
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://651db05044e393af2d5a346e.mockapi.io/yachts/${id}`
-        );
-        const filteredData = response.data.filter((yacht) => {
-          return yacht.id === parseInt(id);
-        });
-
-
+        // const response = await axios.get(
+        //   `https://651db05044e393af2d5a346e.mockapi.io/yachts/${id}`
+        // );
+        // const filteredData = response.data.filter((yacht) => {
+        //   return yacht.id === parseInt(id);
+        // });
 
         const getRandomItems = (array, numItems) => {
-          const shuffledArray = array.slice(); 
+          const shuffledArray = array.slice();
           for (let i = shuffledArray.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+            [shuffledArray[i], shuffledArray[j]] = [
+              shuffledArray[j],
+              shuffledArray[i],
+            ];
           }
           return shuffledArray.slice(0, numItems);
         };
-    
-       
-        const randomData = getRandomItems(filteredData, 3);
-    
-        setData(randomData);
+
+        // const randomData = getRandomItems(filteredData, 3);
+
+        // setData(randomData);
       } catch (error) {
         // Handle the error
         console.error(error);
       }
     };
-    
-    
-    
-  
+
     fetchEventData();
     fetchData();
   }, [id]);
-
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -105,7 +102,7 @@ function SingleProduct() {
           nights: nights,
           userId: user.user_id,
         })
-        
+
         .then((response) => {
           setBookingData({
             userId: "",
@@ -123,23 +120,22 @@ function SingleProduct() {
             navigate("/booking");
           });
         })
-        
+
         .catch((error) => {
           // Handle error if needed
         });
-         const cartData = {
-           yachtId: id,
-           startDate: startDate,
-           endDate: endDate,
-           nights: nights,
-           totalPrice: formData.price * nights,
-         };
-               const existingCart =
-                 JSON.parse(localStorage.getItem("cart")) || [];
+      const cartData = {
+        yachtId: id,
+        startDate: startDate,
+        endDate: endDate,
+        nights: nights,
+        totalPrice: formData.price * nights,
+      };
+      const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-               existingCart.push(cartData);
+      existingCart.push(cartData);
 
-               localStorage.setItem("cart", JSON.stringify(existingCart));
+      localStorage.setItem("cart", JSON.stringify(existingCart));
     } else {
       // User is logged in, add data to the cart and navigate to "/login"
       const cartData = {
@@ -229,7 +225,7 @@ function SingleProduct() {
           <div
             className=" bg-img-hero min-height-550"
             style={{
-              backgroundImage: `url(${formData.image1})`,
+              // backgroundImage: `url(${formData.image1})`,
               width: "100%",
               backgroundAttachment: "cover",
               backgroundSize: "cover",
@@ -239,7 +235,7 @@ function SingleProduct() {
           <div
             className="js-slide bg-img-hero min-height-550"
             style={{
-              backgroundImage: `url(${formData.image2})`,
+              // backgroundImage: `url(${formData.image2})`,
               width: "100%",
               backgroundAttachment: "cover",
               backgroundSize: "cover",
@@ -249,7 +245,7 @@ function SingleProduct() {
           <div
             className="js-slide bg-img-hero min-height-550"
             style={{
-              backgroundImage: `url(${formData.image3})`,
+              // backgroundImage: `url(${formData.image3})`,
               width: "100%",
               backgroundAttachment: "cover",
               backgroundSize: "cover",
@@ -269,12 +265,14 @@ function SingleProduct() {
         </div>
         {/* <!-- End Images Carousel --> */}
       </div>
+
+      <Details/>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-xl-9">
             <div class="d-block d-md-flex flex-center-between align-items-start mb-3">
               <div class="mb-3">
-                <div class="d-block d-md-flex flex-horizontal-center mb-2 mb-md-0">
+                {/* <div class="d-block d-md-flex flex-horizontal-center mb-2 mb-md-0">
                   <h4 class="font-size-23 font-weight-bold mb-1 mr-3 pr-1">
                     {formData.name}
                   </h4>
@@ -286,11 +284,10 @@ function SingleProduct() {
                       <small class="fas fa-star"></small>
                       <small class="fas fa-star"></small>
                     </div>
-                    {/* <span class="text-secondary font-size-14 mt-1">
-                       Reviews
-                    </span> */}
+                  
                   </div>
-                </div>
+                </div> */}
+                
                 <div class="d-block d-md-flex flex-horizontal-center font-size-14 text-gray-1">
                   <i class="icon flaticon-placeholder mr-2 font-size-20">
                     {formData.location}
@@ -723,8 +720,7 @@ function SingleProduct() {
           </div>
             </div>
           </div> */}
-        </div>
-      
+      </div>
     </main>
   );
 }
