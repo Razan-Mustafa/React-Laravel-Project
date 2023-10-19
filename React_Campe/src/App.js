@@ -38,14 +38,15 @@ function App() {
         <Route path="/about" element={<Aboutus />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/packages" element={<Yacht />} /> */}
 
-        <Route path="/yachts/:id" element={<Yacht />} />
+        <Route path="/packages/:id" element={<Yacht />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         {/* <Route path="/product" element={<Product />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
       </Routes>
-   
+
       {!hideFooter && <Footer />}
     </div>
   );

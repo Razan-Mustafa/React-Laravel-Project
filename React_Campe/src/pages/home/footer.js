@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Footer(){
 
-    const navigate = useNavigate();
+const navigate = useNavigate();
 
   const id1 = 1;
   const id2 = 2;
@@ -86,7 +86,7 @@ return(
                             </ul>
                          
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                        {/* <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
                             <h4 class="h6 font-weight-bold mb-2 mb-xl-4 font-size-17">Destinations</h4>
                             
                             <ul class="list-group list-group-flush list-group-borderless mb-0">
@@ -96,9 +96,9 @@ return(
                                 <li><a class="text-decoration-on-hover list-group-item list-group-item-action" onClick={() => handleButtonClick(id4)}>Bodrum</a></li>
                             </ul>
                           
-                        </div>
+                        </div> */}
                    
-                        <div class="col-12 col-md-6 col-lg col-xl-3dot1">
+                        {/* <div class="col-12 col-md-6 col-lg col-xl-3dot1">
                             <div class="mb-4 mb-xl-2">
                                 <h4 class="h6 font-weight-bold mb-2 mb-xl-4 font-size-20">Mailing List</h4>
                                 <p class="m-0 text-gray-1">Sign up for our mailing list to get latest updates and offers.</p>
@@ -114,7 +114,7 @@ return(
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

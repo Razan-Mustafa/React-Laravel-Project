@@ -4,7 +4,7 @@
 
 /* Pagination container */
 .pagination-container {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -23,15 +23,14 @@
 
 .pagination a {
   text-decoration: none;
-  padding: 5px 10px;
-  background-color: rgb(41,124,187);
+    padding: 8px 18px;
+  background-color: #637E4C;
   color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .pagination a.active {
-  background-color: #14467b;
+  background-color: #94f19a;
 }
 
 /* Styling for "Previous" and "Next" buttons */
@@ -103,4 +102,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+.image-1235x547 {
+  width: 1235px;
+  height: 547px;
+  object-fit: cover; /* This ensures the image covers the entire specified area without distortion. */
 }

@@ -176,6 +176,7 @@
   box-sizing: border-box;
 }
 
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8605,6 +8606,8 @@ input[type="button"].btn-block {
     display: flex !important;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
+            margin: 0 279px 0 0 !important;
+
   }
   .navbar-expand-xl .navbar-toggler {
     display: none;
@@ -46226,7 +46229,7 @@ Letter Spacing
 }
 .footer {
   box-shadow: 2px 2px 2px 3px var(--blue);
-  background-color: white !important;
+  background-color: #e7eaf3 !important;
 }
 .hay{
    background-color: rgba(25, 160, 255, 0.11) !important;
