@@ -1,8 +1,7 @@
 import { data } from "jquery";
 import React from "react";
 import { setStatus } from "react";
-import yacht from "./yacht (1).png";
-import {
+ import {
   BrowserRouter as Router,
   Route,
   useNavigate,
