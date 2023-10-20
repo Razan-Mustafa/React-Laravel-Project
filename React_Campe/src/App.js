@@ -16,6 +16,8 @@ import Footer from "./pages/home/footer";
 import "bootstrap/dist/js/bootstrap"; 
 import Contact from "./pages/contact";
 import MaybeShowNavbar from "./MaybeShowNavbar"
+import SignIn from "./SignIn";
+import GoogleCallback from "./GoogleCallback";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -47,7 +49,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/packages" element={<Yacht />} /> */}
-
+        <Route path="/SignIn" element={<SignIn />}></Route>
+              <Route path="/auth/google" element={<GoogleCallback />}></Route>
         <Route path="/category/:id" element={<Category />} />
         <Route path="/package/:id" element={<SingleProduct />} />
         {/* <Route path="/product" element={<Product />} /> */}

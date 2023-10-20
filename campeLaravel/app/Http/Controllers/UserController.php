@@ -61,13 +61,22 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|string',
+                'name' => ['required', 'string', 'regex:/^[^0-9].*/'],
                 'email' => 'email|required|unique:users',
-                'password' => 'required|min:8',
+                'password' => [
+                    'required',
+                    'min:8',
+                    'regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/',
+                ],
                 // 'phone' => 'required|min:10|max:10',
-                // 'image' => 'required|max:5048',
+                // 'image' => 'image|mimes:jpeg,png,jpg,gif|max:5048',
+            ],
+            [
+                'name.regex' => 'The name must not start with a number.',
+                'password.regex' => 'The password must contain at least one capital letter and one symbol (!@#$%^&*).',
             ]
         );
+        
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -76,13 +85,13 @@ class UserController extends Controller
 
         $user = new User();
 
-        // if($request->hasFile('image')){
-        //     $image = $request->file('image');
-        //     $filename = time().'.'.$image->getClientOriginalExtension();
-        //     $destinationPath = public_path('/img');
-        //     $image->move($destinationPath, $filename);
-        //     $user->image = $filename;
-        // }
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img');
+            $image->move($destinationPath, $filename);
+            $user->image = $filename;
+        }
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -150,6 +159,11 @@ class UserController extends Controller
     public function EditProfile(Request $request, $id)
     {
         $user = User::find($id);
+    
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+    
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -160,13 +174,50 @@ class UserController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/img');
             $image->move($destinationPath, $filename);
-            $user->image = $filename; // Update the user's image field in the database
+            $user->image = $filename;
+        } else {
+            // Keep the existing image if no new image is provided
+            $user->image = $user->image;
         }
     
         $user->save();
+    
         return response()->json($user);
     }
     
+    
+// app/Http/Controllers/UserController.php
+
+public function updatePassword(Request $request, $id)
+{
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+
+    // Validate the request
+    $validator = Validator::make($request->all(), [
+        'current_password' => 'required',
+        'new_password' => 'required|min:8',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()->all()], 400);
+    }
+
+    // Check if the current password is correct
+    if (!Hash::check($request->input('current_password'), $user->password)) {
+        return response()->json(['error' => 'Current password is incorrect'], 400);
+    }
+
+    // Update the password
+    $user->password = Hash::make($request->input('new_password'));
+    $user->save();
+
+    return response()->json(['message' => 'Password updated successfully'], 200);
+}
+
     
 
     /**

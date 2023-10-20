@@ -75,7 +75,14 @@ class BookingController extends Controller
         $bookings = Booking::where('user_id', $id)->get();
         return response()->json($bookings);
     }
-
+    public function show_booking($id)
+    {
+        // Fetch the booking data for the user
+        $bookings = Booking::where('user_id', $id)->get();
+        $bookings->load('package');
+    
+        return response()->json($bookings);
+    }
     /**
      * Show the form for editing the specified resource.
      *

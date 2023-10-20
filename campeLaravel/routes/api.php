@@ -9,7 +9,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,6 +42,18 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 
 Route::get('users/{id}', [UserController::class, 'profile']);
+Route::get('book/{id}', [BookingController::class, 'show_booking']);
+
 Route::post('edit_profile/{id}', [UserController::class, 'EditProfile']);
+
+
+Route::put('eng/{id}', [UserController::class, 'updatePassword']);
+
+
+Route::get('auth', [AuthController::class, 'redirectToAuth']);
+Route::get('auth/callback', [AuthController::class, 'handleAuthCallback']);
+
+
+
 
 
