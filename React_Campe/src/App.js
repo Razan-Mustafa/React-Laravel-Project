@@ -44,7 +44,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
         <Route path="/about" element={<Aboutus />} />
-        <Route path="/blog" element={<Blog />} />
+        {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/packages" element={<Yacht />} /> */}
         <Route path="/category" component={Category} />
