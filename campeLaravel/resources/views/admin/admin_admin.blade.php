@@ -121,7 +121,7 @@
                                             <tr>
 
                                                 <td>
-                                                    <img src="../image/{{ $admins->image }}" alt="{{ $admins->name }}"
+                                                    <img src="{{ asset('photo'.$admins->image )}}" alt="{{ $admins->name }}"
                                                         width="60px" height="60px">
                                                 </td>
 

@@ -16,8 +16,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin_admin.update', ['admin_admin' => $admin_admin->id]) }}"
-                                    method="POST">
+                                <form action="{{ route('admin_admin.update', ['admin_admin' => $admin_admin->id]) }} " method="POST" enctype="multipart/form-data">
 
                                     @csrf
                                     @method('PUT')
@@ -31,7 +30,7 @@
                                     <div class="form-group">
                                         <label for="email">email</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            value="{{ $admin_admin->name }}">
+                                            value="{{ $admin_admin->email }}">
                                     </div>
 
                                     <div class="form-group">
