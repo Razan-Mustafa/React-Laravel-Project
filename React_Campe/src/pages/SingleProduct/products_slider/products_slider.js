@@ -159,10 +159,9 @@
 // export default ImageGallery;
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-
 import './style.css'
 
-function ImageGallery({ package_id }) {
+ function ImageGallery({ package_id }) {
     const [slideIndex, setSlideIndex] = useState(1);
     const [products, setProducts] = useState([]);
     // useEffect(() => {

@@ -61,22 +61,12 @@ function Navbar() {
                 style={mytext}
                 className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1"
               >
-                {/* <a
-                  className="navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white"
-                  href="../home/index.html"
-                  aria-label="MyYacht"
-                  style={mytext}
-                >
-<img src={yacht}  style={{ width: '90px' ,height:'75px'}}></img>
-
-                  <span className="u-header__navbar-brand-text" style={mytext}>
-                    CAMPE
-                  </span>
-                </a> */}
+              
 
                 <a
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center"
-                  href="../home/index.html"
+                  
+                  href="#"
                   aria-label="MyYacht"
                 >
                   <img

@@ -79,78 +79,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="recent-article-block recent-article-v1">
-        <div className="container space-1 mt-3 mb-lg-4">
-          <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5">
-            <h2 className="section-title text-black font-size-30 font-weight-bold mb-0">
-              Recent Articles
-            </h2>
-          </div>
-          <div className="row">
-            <div className="col-md-6 col-lg-4">
-              <div className="mb-4 mb-lg-0 text-md-center text-lg-left">
-                <a className="d-block mb-3" onClick={() => handleButtonClick()}>
-                  <img
-                    className="img-fluid rounded-xs w-100"
-                    src="/assets/img/ajloun.jpg"
-                    alt="Image-Description"
-                  ></img>
-                </a>
-                <h6 className="text-gray-6 font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1">
-                  <a href=" " onClick={() => handleButtonClick()}>
-                    How to travel with paper map
-                  </a>
-                </h6>
-                <a className="text-gray-1" href=" ">
-                  <span>June 6, 2019</span>
-                </a>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="mb-4 mb-lg-0 text-md-center text-lg-left">
-                <a className="d-block mb-3" onClick={() => handleButtonClick()}>
-                  <img
-                    className="img-fluid rounded-xs w-100"
-                    src="/assets/img/wadyram.jpg"
-                    alt="Image-Description"
-                  ></img>
-                </a>
-                <h6 className="text-gray-6 font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1">
-                  <a href=" " onClick={() => handleButtonClick()}>
-                    Change your place and get fresh air
-                  </a>
-                </h6>
-                <a className="text-gray-1" href=" ">
-                  <span>June 6, 2019</span>
-                </a>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="mb-0 text-md-center text-lg-left">
-                <a
-                  className="d-block mb-3"
-                  href=" "
-                  onClick={() => handleButtonClick()}
-                >
-                  <img
-                    className="img-fluid rounded-xs w-100"
-                    src="../../assets/img/410x300/img3.jpg"
-                    alt="Image-Description"
-                  ></img>
-                </a>
-                <h6 className="text-gray-6 font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1">
-                  <a href=" " onClick={() => handleButtonClick()}>
-                    Pityful a rethoric question ran
-                  </a>
-                </h6>
-                <a className="text-gray-1" href=" ">
-                  <span>June 6, 2019</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+   
     </div>
   );
 }
