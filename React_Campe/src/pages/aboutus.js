@@ -1,9 +1,9 @@
 import React from 'react'
-import img3 from "./boat1.jpg";
-import img4 from "./boat1.jpg";
-import img5 from "./boat2.jpg";
-import img6 from "./boat3.jpg";
-import img7 from "./boat4.jpg";
+// import img3 from "./boat1.jpg";
+// import img4 from "./boat1.jpg";
+// import img5 from "./boat2.jpg";
+// import img6 from "./boat3.jpg";
+// import img7 from "./boat4.jpg";
 // import shatha from "./shatha.jpg";
 // import sereen from "./sereen.jpg";
 // import rama from "./rama.jpg";
@@ -14,63 +14,70 @@ import CounterComponent from "./home/counter";
 
 export default function Aboutus() {
 
-const myStyle = {
-  backgroundImage: `url(${img3})`,
-};
-const imagslider1 = {
-  backgroundImage: `url(${img4})`,
-};
-const imagslider2 = {
-  backgroundImage: `url(${img5})`,
-};
-const imagslider3 = {
-  backgroundImage: `url(${img6})`,
-};
-const imagslider4 = {
-  backgroundImage: `url(${img7})`,
-};
-const imagslider5 = {
-  backgroundImage: `url(${img6})`,
-};
-const imagefluid1 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid2 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid3 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid4 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid5 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid6 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid7 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid8 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid9 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid10 = {
-  backgroundImage: `url(${img3})`,
-};
-const imagefluid11 = {
-  backgroundImage: `url(${img3})`,
-};
+  // const myStyle = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagslider1 = {
+  //   backgroundImage: `url(${img4})`,
+  // };
+  // const imagslider2 = {
+  //   backgroundImage: `url(${img5})`,
+  // };
+  // const imagslider3 = {
+  //   backgroundImage: `url(${img6})`,
+  // };
+  // const imagslider4 = {
+  //   backgroundImage: `url(${img7})`,
+  // };
+  // const imagslider5 = {
+  //   backgroundImage: `url(${img6})`,
+  // };
+  // const imagefluid1 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid2 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid3 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid4 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid5 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid6 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid7 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid8 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid9 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid10 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
+  // const imagefluid11 = {
+  //   backgroundImage: `url(${img3})`,
+  // };
   return (
     <div>
       {/* <!-- ========== MAIN CONTENT ========== --> */}
       <main id="content">
         {/* <!-- Hero Section --> */}
-        <div className="bg-img-hero text-center mb-4" style={{ backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)',height:'550px'}}>
+        <div
+          className="bg-img-hero text-center mb-4"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)",
+            height: "550px",
+          }}
+        >
           <div className="container space-top-xl-3 py-6 py-xl-0">
             <div className="row justify-content-center py-xl-4">
               <div className="py-xl-10 py-5">
@@ -97,7 +104,6 @@ const imagefluid11 = {
             </div>
           </div>
         </div>
-
         {/* <div className="slider border-bottom border-color-3">
           <div className="container space-1">
             <div className="w-md-80 w-lg-70 text-center mx-md-auto mb-5 mt-3">
@@ -232,7 +238,7 @@ const imagefluid11 = {
         {/* <!--Banner--> */}
         <div
           className="gradient-overlay-half-bg-grayish-blue bg-img-hero space-3 space-top-lg-4 space-bottom-lg-3"
-          style={imagefluid1}
+          // style={imagefluid1}
         >
           <div className="text-center mt-xl-2">
             <h5 className="text-white font-size-41 font-weight-bold mb-2">
@@ -260,12 +266,11 @@ const imagefluid11 = {
         </div>
         {/* <!--End Banner--> */}
         {/* <!-- Testimonials Section --> */}
-   
         {/* <!-- End Testimonials Section --> */}
         {/* <!-- Features Section --> */}
-        <br></br>   <br></br>   <br></br>    <br></br>   
-     <CounterComponent />
-     <br></br>  
+        <br></br> <br></br> <br></br> <br></br>
+        <CounterComponent />
+        <br></br>
         {/* <!-- End Features Section --> */}
         {/* <!-- Team --> */}
         <div className="team border-bottom border-color-3">
@@ -311,10 +316,10 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Shatha Rababah
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Telcom Engineer 
+                  Telcom Engineer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -352,10 +357,10 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Sereen Qamhieh
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Full stuck developer
+                  Full stack developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -393,10 +398,10 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                 Nooraldeen
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                Full stuck developer
+                  Full stack developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -434,7 +439,7 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Rama
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
                   Chief Executive
@@ -475,10 +480,10 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Yousef Jaradat
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                 Full stuck developer
+                  Full stack developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -516,7 +521,7 @@ const imagefluid11 = {
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                 Ahmed Khatatbeh
+                  {/* name  */}
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
                   Founder & CEO

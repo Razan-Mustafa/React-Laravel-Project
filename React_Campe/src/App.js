@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"; // Import the necessary components from react-router-dom
-import { useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Home from "./pages/home/home";
@@ -16,19 +15,28 @@ import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
 import "bootstrap/dist/js/bootstrap"; 
 import Contact from "./pages/contact";
+import MaybeShowNavbar from "./MaybeShowNavbar"
+import { useLocation } from "react-router-dom";
 
 function App() {
-  const { pathname } = useLocation(); // Use 'useLocation' to get the current path
 
-  // List of routes where you want to hide the footer
-  const routesWithoutFooter = ["/Login"];
+  // const { pathname } = useLocation(); // Use 'useLocation' to get the current path
+  
+  // // List of routes where you want to hide the footer
+  // const routesWithoutFooter = ["/Login"];
 
-  // Check if the current path is in the list of routes without the footer
-  const hideFooter = routesWithoutFooter.includes(pathname);
+  // // Check if the current path is in the list of routes without the footer
+  // const hideFooter = routesWithoutFooter.includes(pathname);
+  const { pathname } = useLocation();
 
+  const hideFooter = pathname === "/login" || pathname === "/register";
+  const hideNavbar = pathname === "/login" || pathname === "/register";
   return (
     <div>
+      {/* <MaybeShowNavbar>
       <Navbar />
+      </MaybeShowNavbar > */}
+      {!hideNavbar  && <Navbar />}
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
