@@ -83,6 +83,16 @@ function Reviews({
     }
   };
 
+  function calculateAverageRate(reviews) {
+    if (reviews.length === 0) {
+      return 0; // Return 0 if there are no reviews to avoid division by zero.
+    }
+
+    const totalRate = reviews.reduce((accumulator, review) => accumulator + review.rate, 0);
+    return totalRate / reviews.length;
+  }
+  const average = calculateAverageRate(reviews);
+
   return (
     <div className="section sigma_post-details">
       <div className="container">
@@ -292,15 +302,15 @@ function Reviews({
                           required
                         ></textarea>
                       </div>
-                      <div style={{textAlign: "right"}}>
-                      <button type="submit" 
-                      style={{
+                      <div style={{ textAlign: "right" }}>
+                        <button type="submit"
+                          style={{
                             borderRadius: "5px",
                             padding: "10px",
                             marginTop: "5px",
                           }}>Submit Review
                         </button>
-                  </div>
+                      </div>
                     </form>
                   </div>
                 )}

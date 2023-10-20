@@ -1,148 +1,150 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2"; // Import SweetAlert
-import "../login.css";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [data, setData] = useState([]);
+const Login = () => {
   const navigate = useNavigate();
 
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation for email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid email format",
-      });
-      return;
-    }
-
-    const user = data.find((userdata) => userdata.email === email);
-    if (!user) {
-      Swal.fire({
-        icon: "error",
-        title: "User not found",
-      });
-      return;
-    }
-
-    // Password validation - minimum length of 8 characters
-    if (password.length < 8) {
-      Swal.fire({
-        icon: "error",
-        title: "Password must be at least 8 characters long",
-      });
-      return;
-    }
-
-    if (user.password === password) {
-      const userString = localStorage.getItem("user");
-      const users = JSON.parse(userString);
-      const userData = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        user_id: user.id,
-        status: true,
-        
-      };
-      localStorage.setItem("user", JSON.stringify(userData));
-
-      if (localStorage.getItem("cart")) {
-        const cartData = localStorage.getItem("cart");
-        const cart = JSON.parse(cartData);
-        const startDate = new Date(cart[0].startDate);
-        const endDate = new Date(cart[0].endDate);
-        const nights = Math.floor(
-          (endDate - startDate) / (1000 * 60 * 60 * 24)
-        );
-
-        axios
-          .post("https://651a606d340309952f0d2d8f.mockapi.io/booking", {
-            userId: userData.user_id,
-            yachtId: cart[0].yachtId,
-            startDate: startDate,
-            endDate: endDate,
-            totalPrice: cart[0].totalPrice,
-            nights: nights,
-          })
-          .then((response) => {
-            navigate("/booking");
-            // localStorage.removeItem("cart");
-          })
-          .catch((error) => {
-            console.error("Error while posting booking data:", error);
-            // Handle the error appropriately
-          });
-      } else {
-        navigate("/");
-      }
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid password",
-      });
-    }
-  };
-
-  useEffect(() => {
-    const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
-
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        setData(response.data);
+    axios({
+      method: "post",
+      url: "http://localhost:8000/api/login",
+      data: user,
+    })
+      .then((res) => {
+        console.log("Response Data:", res.data.user.id);
+        if (res.data.errors) {
+          setError(res.data.errors);
+        } else {
+          // Store user data in session storage
+          // sessionStorage.setItem("user_id", res.data.id);
+          localStorage.setItem("user_id", res.data.user.id);
+          setIsLoggedIn(true);
+          // Redirect to the home page or perform any other actions
+          navigate("/home");
+        }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.log(error.response.data.message);
       });
-  }, []); // Empty dependency array for one-time API request
+  };
 
-  return (
-    <div className="login-container">
-      <div className="login-form-wrap">
-        <h2 className="login">Login</h2>
-        <form onSubmit={handleSubmit} id="login-form">
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              id="email"
-              name="email"
-              className="form-control"
-              value={email}
-              placeholder="Enter your email"
-              required
-            />
+
+ 
+    return (
+      <>
+<section className="h-100 gradient-form" style={{ backgroundColor: '#eee', overflowY: 'hidden' }}>
+      <div className="container py-2 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col-xl-10">
+            <div className="card rounded-3 text-black">
+              <div className="row g-0">
+
+              <div className="col-lg-6 mt-10" style={{ backgroundColor: 'rgba(238, 238, 238, 0.02)' }}>
+
+                  <div className="card-body p-md-5 mx-md-4">
+                    <div className="text-center">
+                      <a href="/home">
+                      <img
+                        src="https://media.discordapp.net/attachments/1163503933537402931/1164692955756515468/qqqqqqq.png?ex=654423d7&is=6531aed7&hm=1f6b05cd8b932bbebedaef18a771524c3f48dd726e70594188aa296eedd599ce&=&width=408&height=440"
+                        style={{ width: '150px' }}
+                        alt="logo"
+                      /></a>
+                      <h4 className="mt-1 mb-5 pb-1">We are The CAMPE Team</h4>
+                    </div>
+                    <form
+                  action="#"
+                  onSubmit={handleSubmit}
+                  className="signin-form"
+                >
+                      <p>Please login to your account</p>
+                      <div className="form-outline mb-4">
+                        <input
+                                 id="name"
+                                 className="form-control"
+                                 onChange={(e) =>
+                                   setUser((prev) => ({
+                                     ...prev,
+                                     email: e.target.value,
+                                   }))
+                                 }
+                                 type="text"
+                                 placeholder="Email"
+                                 name="email"
+                                 value={user.email}
+                                 required
+                        />
+                        {/* <label className="form-label" htmlFor="form2Example11">
+                          Username
+                        </label> */}
+                      </div>
+                      <div className="form-outline mb-1">
+                        <input
+                          onChange={(e) =>
+                            setUser((prev) => ({
+                              ...prev,
+                              password: e.target.value,
+                            }))
+                          }
+                          id="Password"
+                          className="form-control"
+                          type="password"
+                          placeholder="Password"
+                          name="Password"
+                          value={user.password}
+                          required
+                        />
+                    
+                      </div>
+                      <div className="text-center pt-1  pb-1">
+                        <button
+                          className="btn btn-primary btn-block fa-lg mb-3"
+                          type="submit"
+                        >
+                          Log in
+                        </button>
+                        {/* <a className="text-muted" href="#!">
+                          Forgot password?
+                        </a> */}
+                      </div>
+                      <div className="d-flex align-items-right justify-content-right pb-4">
+                        <p className="mb-0 me-2">Don't have an account? <a href="/register" style={{ color: "green" }}>
+                    Sign Up
+                  </a></p>
+                        {/* <button type="button" className="btn btn-outline-danger">
+                          Create new
+                        </button> */}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                {/* <div className="col-lg-6 d-flex align-items-center">
+                 
+<img src="https://i.pinimg.com/564x/7a/8f/d2/7a8fd229c2cff7b54f68c2b024f0e390.jpg" height="100%" width="100%" /> */}
+                    
+<div className="col-lg-6 d-flex align-items-center" style={{height: '736px'}}>
+                 
+                 <img src="https://i.pinimg.com/564x/61/d5/e8/61d5e805e7c3bb5a5453c374480a1884.jpg" height="100%" width="100%" />  
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              className="form-control"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-          <button className="btn btn-primary col-12" type="submit">
-            Log In
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
-  );
-}
+    </section>
+    </>
+    );
 
-export default Login;
+
+
+};
+export default Login

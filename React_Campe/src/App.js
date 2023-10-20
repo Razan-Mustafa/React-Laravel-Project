@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"; // Import the necessary components from react-router-dom
-import { useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Home from "./pages/home/home";
@@ -10,25 +9,34 @@ import Booking from "./pages/booking";
 import Aboutus from "./pages/aboutus";
 import Profile from "./pages/profile/Profile";
 import SingleProduct from "./pages/SingleProduct/singleproduct";
-import Yacht from "./pages/products/yacht";
+import Category from "./pages/products/single_category";
 import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
 import "bootstrap/dist/js/bootstrap"; 
 import Contact from "./pages/contact";
+import MaybeShowNavbar from "./MaybeShowNavbar"
+import { useLocation } from "react-router-dom";
 
 function App() {
-  const { pathname } = useLocation(); // Use 'useLocation' to get the current path
 
-  // List of routes where you want to hide the footer
-  const routesWithoutFooter = ["/Login"];
+  // const { pathname } = useLocation(); // Use 'useLocation' to get the current path
+  
+  // // List of routes where you want to hide the footer
+  // const routesWithoutFooter = ["/Login"];
 
-  // Check if the current path is in the list of routes without the footer
-  const hideFooter = routesWithoutFooter.includes(pathname);
+  // // Check if the current path is in the list of routes without the footer
+  // const hideFooter = routesWithoutFooter.includes(pathname);
+  const { pathname } = useLocation();
 
+  const hideFooter = pathname === "/login" || pathname === "/register";
+  const hideNavbar = pathname === "/login" || pathname === "/register";
   return (
     <div>
+      {/* <MaybeShowNavbar>
       <Navbar />
+      </MaybeShowNavbar > */}
+      {!hideNavbar  && <Navbar />}
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
@@ -40,8 +48,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/packages" element={<Yacht />} /> */}
 
-        <Route path="/packages/:id" element={<Yacht />} />
-        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/category/:id" element={<Category />} />
+        <Route path="/package/:id" element={<SingleProduct />} />
         {/* <Route path="/product" element={<Product />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
