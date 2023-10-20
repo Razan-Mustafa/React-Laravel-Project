@@ -62,7 +62,7 @@ const mytext2 = {
 <img src={yacht}  style={{ width: '90px' ,height:'75px'}}></img>
 
                   <span className="u-header__navbar-brand-text" style={mytext}>
-                    MyYacht
+                    CAMPE
                   </span>
                 </a> */}
 
@@ -92,7 +92,7 @@ const mytext2 = {
 </svg>
 
                   <span className="u-header__navbar-brand-text" style={mytext}>
-                    MyYacht
+                    CAMPE
                   </span>
                 </a>
 
@@ -248,16 +248,29 @@ const mytext2 = {
 <img src={yacht}  style={{ width: '90px' ,height:'75px'}}></img>
 
                   <span className="u-header__navbar-brand-text" style={mytext}>
-                    MyYacht
+                    CAMPE
                   </span>
                 </a> */}
-
+                {/* //////////////// logo for  team 2 */}
                 <a
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center"
                   href="../home/index.html"
                   aria-label="MyYacht"
                 >
-<svg
+                  <div>
+                    <img
+                      src="/assets/img/qqqqqqq.png"
+                      alt="Logo"
+                      style={{
+                        width: "100px",
+                        height: "",
+                        marginBottom: "0",
+                        display: "inline-block",
+                      }}
+                    />
+                  </div>
+
+                  {/* <svg
   xmlns="http://www.w3.org/2000/svg"
   xmlnsXlink="http://www.w3.org/1999/xlink"
   width="55px"
@@ -275,13 +288,12 @@ const mytext2 = {
       </svg>
     </div>
   </foreignObject>
-</svg>
+</svg> */}
 
                   <span className="u-header__navbar-brand-text" style={mytext}>
-                    MyYacht
+                    CAMPE
                   </span>
                 </a>
-
 
                 <button
                   type="button"
@@ -330,6 +342,8 @@ const mytext2 = {
                         style={myStyle}
                       ></ul>
                     </li>
+
+                   
 
                     <Link
                       style={mytext}
