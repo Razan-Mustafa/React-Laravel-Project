@@ -19963,12 +19963,12 @@ a.text-violet-light:focus,
 a.text-violet-light:hover {
   color: #490d87 !important;
 }
-.text-brown-light {
+/* .text-brown-light {
   color: #ceac61 !important;
-}
+} */
 a.text-brown-light:focus,
 a.text-brown-light:hover {
-  color: #ad8836 !important;
+  color: #637E4C !important;
 }
 .text-brown {
   color: #f8bd5b !important;

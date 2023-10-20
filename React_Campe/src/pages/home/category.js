@@ -49,7 +49,6 @@ function Category() {
                         {category.name}
                       </a>
                     </div>
-
                     <div className="pb-3 text-lh-1">
                       <p
                         className="text-white font-weight-bold font-size-21"
@@ -79,4 +78,3 @@ function Category() {
 }
 
 export default Category;
-

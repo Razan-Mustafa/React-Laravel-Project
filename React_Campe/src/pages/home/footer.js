@@ -86,46 +86,14 @@ return(
                             </ul>
                          
                         </div>
-                        {/* <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
-                            <h4 class="h6 font-weight-bold mb-2 mb-xl-4 font-size-17">Destinations</h4>
-                            
-                            <ul class="list-group list-group-flush list-group-borderless mb-0">
-                                <li><a class="list-group-item list-group-item-action text-decoration-on-hover " onClick={() => handleButtonClick(id1)} >Aqaba</a></li>
-                                <li><a class="text-decoration-on-hover list-group-item list-group-item-action" onClick={() => handleButtonClick(id2)}>Abu Dhabi</a></li>
-                                <li><a class="text-decoration-on-hover list-group-item list-group-item-action" onClick={() => handleButtonClick(id3)}>Miami</a></li>
-                                <li><a class="text-decoration-on-hover list-group-item list-group-item-action" onClick={() => handleButtonClick(id4)}>Bodrum</a></li>
-                            </ul>
-                          
-                        </div> */}
                    
-                        {/* <div class="col-12 col-md-6 col-lg col-xl-3dot1">
-                            <div class="mb-4 mb-xl-2">
-                                <h4 class="h6 font-weight-bold mb-2 mb-xl-4 font-size-20">Mailing List</h4>
-                                <p class="m-0 text-gray-1">Sign up for our mailing list to get latest updates and offers.</p>
-                            </div>
-                            <form class="js-validate js-focus-state js-form-message" novalidate="novalidate">
-                                <label class="sr-only text-gray-1" for="subscribeSrEmailExample1">Your Email</label>
-                                <div class="input-group">
-                                    <input type="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8" name="email" id="subscribeSrEmailExample1" 
-                                    placeholder="Your Email" aria-label="Your email address" aria-describedby="subscribeButtonExample3" 
-                                    required="" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success"></input>
-                                    <div class="input-group-append ml-3">
-                                        <button class="btn btn-primary border-radius-3 height-54 min-width-112 font-size-14" type="submit" id="subscribeButtonExample3">Subscribes</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div> */}
+                   
+                        
                     </div>
                 </div>
             </div>
            
-            {/* <div className="space-1" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <div className="container">
-          <div className="d-lg-flex d-md-block justify-content-center align-items-center">
-            <p className="mb-3 mb-lg-0 text-gray-1">© 2020 MyTravel. All rights reserved</p>
-          </div>
-        </div>
-      </div> */}
+     
         </footer>
       
 
