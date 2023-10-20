@@ -42,6 +42,8 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 
 Route::get('users/{id}', [UserController::class, 'profile']);
+Route::get('users', [UserController::class, 'index']);
+
 Route::post('edit_profile/{id}', [UserController::class, 'EditProfile']);
 
 

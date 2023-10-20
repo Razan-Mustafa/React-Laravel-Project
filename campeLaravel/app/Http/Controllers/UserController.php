@@ -125,8 +125,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // $user = User::where('id',$id)->get();
-        // return response()->json($user);
+        $user = User::where('id',$id)->get();
+        return response()->json($user);
     }
 
     /**
