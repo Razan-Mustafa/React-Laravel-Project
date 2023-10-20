@@ -4,82 +4,67 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\Booking;
+use App\Models\Category;
+use App\Models\Package;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $admin = Admin::all();
+        $adminCategories = Category::all();
+        $adminUser = User::all();
+        $adminBooking = Booking::all();
+        $adminPackage = Package::all();
+
+        return view('admin/admin_admin', compact('admin', 'adminCategories', 'adminUser', 'adminPackage', 'adminBooking'));
+
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
+
+        return view('admin/admin_admin_create ');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function store(Request $request)
     {
-        //
+
+        
+
+        $admin = Admin::create($request->all());
+        $adminId = $admin->id;
+        $admin->save();
+
+
+        return redirect()->route('admin_admin.index', ['admin' => $adminId])->with('success', 'Admin created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
+    public function edit(Admin $admin_admin)
     {
-        //
+        return view('admin/admin_admin_edit', compact('admin_admin'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
+    public function update(Request $request, Admin $admin_admin)
     {
-        //
+        $admin_admin->update($request->all());
+
+        return redirect(route('admin_admin.index'))->with('success', 'Admin updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
+
+    public function destroy($id)
     {
-        //
+        $admin = Admin::find($id);
+        $admin->delete();
+        return redirect()->route('admin_admin.index', ['admin' => $id])->with('success', 'Admin deleted successfully');
     }
 }
