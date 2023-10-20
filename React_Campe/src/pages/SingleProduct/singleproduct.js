@@ -5,11 +5,14 @@ import Swal from "sweetalert2";
 import Reviews from "./ReviewRedux/componentReview";
 import Details from "./productDetail";
 import Slider from "./products_slider/products_slider";
+import productImage from './singlephoto2.jpg'; // Import your image
+
 
 function SingleProduct($id) {
   const [details, setDetails] = useState([]);
   const [selectedDays, setSelectedDays] = useState(1); // State to hold selected number of days
   const [updatedPrice, setUpdatedPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProductDetails = () => {
@@ -24,7 +27,8 @@ function SingleProduct($id) {
 
     getProductDetails();
   }, []);
-  // const pricePerDay = details.price;
+
+  // price / day
   useEffect(() => {
     let pricePerDay = details.price || 0;
     let newPrice = (pricePerDay * selectedDays) / 1.3;
@@ -35,11 +39,37 @@ function SingleProduct($id) {
     setUpdatedPrice(newPrice);
   }, [selectedDays, details.price]);
 
+  // date after 2 days
+  const [minDate, setMinDate] = useState(calculateMinDate());
+
+  function calculateMinDate() {
+    const today = new Date();
+    today.setDate(today.getDate() + 2); // Add 2 days to the current date
+    return today.toISOString().split("T")[0];
+  }
+
+  // Navigation
+  const handleNavigate = () => {
+    const numberOfDays = selectedDays;
+    const price = updatedPrice;
+    const selectedDate = document.getElementById("startDate").value;
+
+    const url = `/booking?days=${numberOfDays}&date=${selectedDate}&price=${price}`;
+
+    // Navigate to the other page
+    navigate(url);
+  };
+
   return (
     <main id="content">
-      <br />
-      <br />
-      <br />
+             <div style={{ textAlign: 'center', marginTop: '80px' }}>
+      <img
+        src={productImage}
+        alt="Product Image"
+        style={{ width: '100%', height: '250px', objectFit: 'cover' }}
+      />
+    </div>
+    
       <br />
       <br />
       <br />
@@ -59,7 +89,9 @@ function SingleProduct($id) {
                 </li>
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-user-2 text-primary font-size-40 mb-1 d-block"></i>
-                  <div class="text-gray-1">{} People</div>
+                  <div class="text-gray-1">
+                    {details.number_of_person} People
+                  </div>
                 </li>
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-bed-1 text-primary font-size-40 mb-1 d-block"></i>
@@ -74,7 +106,9 @@ function SingleProduct($id) {
             <div class="mb-4">
               <div class="border border-color-7 rounded mb-5">
                 <div class="p-4 m-1">
-                  <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">Number of Rent Day</h6>
+                  <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">
+                    Number of Rent Day
+                  </h6>
                   <select
                     name="days"
                     id="daySelect"
@@ -91,10 +125,9 @@ function SingleProduct($id) {
                   </select>
 
                   <br />
-                  
-               
+
                   <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">
-                  Starting Date
+                    Starting Date
                   </h6>
                   <div className="mb-4">
                     <div className="border-bottom border-width-2 border-color-1">
@@ -109,15 +142,8 @@ function SingleProduct($id) {
                           className="form-control"
                           id="startDate"
                           name="startDate"
-                          min={new Date().toISOString().split("T")[0]} // Set min date to today
+                          min={minDate}
                           required
-                          // value={bookingData.startDate}
-                          // onChange={(e) =>
-                          //   setBookingData({
-                          //     ...bookingData,
-                          //     startDate: e.target.value,
-                          //   })
-                          // }
                         />
                       </div>
                     </div>
@@ -127,8 +153,7 @@ function SingleProduct($id) {
                   </h4>
                   <div class="text-center">
                     <a
-                      href="../yacht/yacht-booking.html"
-                      // onClick={handlePost}
+                      onClick={handleNavigate}
                       class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
                     >
                       Book Now

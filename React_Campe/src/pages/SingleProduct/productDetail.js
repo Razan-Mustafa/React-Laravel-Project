@@ -8,7 +8,8 @@ import Slider from './products_slider/products_slider';
 
 const ProductDetails = ({ id }) => {
   const [details, setDetails] = useState([]);
-  const [averageRating, setAverageRating] = useState(0);
+  const [rating, setRating] = useState([]);
+  const [averageRating, setAverageRating] = useState(2);
 
   useEffect(() => {
     const getProductDetails = () => {
@@ -23,6 +24,31 @@ const ProductDetails = ({ id }) => {
 
     getProductDetails();
   }, [id]);
+
+// rate 
+useEffect(() => {
+  const getReviews = () => {
+    axios
+      .get(`http://127.0.0.1:8000/api/reviews/1`)
+      .then((response) => {
+        const reviews = response.data;
+        setRating(reviews);
+
+        // Calculate the average rating
+        const totalRating = reviews.reduce((acc, review) => acc + review.rate, 0);
+        const averageRating = totalRating / reviews.length;
+        setAverageRating(averageRating);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  getReviews();
+}, [id]);
+
+// 
+
+
+
   let package_id = 1;
 
   return (

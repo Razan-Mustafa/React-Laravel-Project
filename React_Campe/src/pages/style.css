@@ -17,7 +17,16 @@
   --thm-border: #ebf2f3; /* Borders */
   --thm-border-rgb: 225, 225, 225; /* Borders rgb */
 }
+.product-image {
+  text-align: center; /* Center the image horizontally */
+  margin-top: 20px; /* Adjust the top margin as needed */
+}
 
+.product-image img {
+  width: 100%; /* Set the image width to 100% of the container */
+  height: 200px; /* Set the image height to 200px */
+  object-fit: cover; /* Maintain the aspect ratio and cover the container */
+}
 /* animation */
 @keyframes pulseInOut {
   0% {
