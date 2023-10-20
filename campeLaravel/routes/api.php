@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
     return $request->user();
 });
 
@@ -31,5 +31,17 @@ Route::resource('reviews', ReviewController::class);
 Route::resource('bookings', BookingController::class);
 Route::resource('packages', PackageController::class);
 Route::resource('contacts', ContactController::class);
-Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
+
+
+
+
+
+
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+
+Route::get('users/{id}', [UserController::class, 'profile']);
+Route::post('edit_profile/{id}', [UserController::class, 'EditProfile']);
+
 
