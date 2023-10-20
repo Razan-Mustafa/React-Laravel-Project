@@ -1687,7 +1687,7 @@ table img {
   background-color: #fff;
   box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.03);
 }
-
+/* 
 .navbar {
   padding: 0;
 }
@@ -1778,7 +1778,7 @@ table img {
   left: 0;
   width: 100%;
   z-index: 55;
-}
+} */
 
 /* Header top */
 .sigma_header-top {

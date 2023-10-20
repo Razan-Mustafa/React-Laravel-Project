@@ -47,6 +47,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/packages" element={<Yacht />} /> */}
+        <Route path="/category" component={Category} />
 
         <Route path="/category/:id" element={<Category />} />
         <Route path="/package/:id" element={<SingleProduct />} />
