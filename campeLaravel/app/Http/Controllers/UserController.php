@@ -176,7 +176,7 @@ class UserController extends Controller
             $image->move($destinationPath, $filename);
             $user->image = $filename;
         } else {
-            // Keep the existing image if no new image is provided
+          
             $user->image = $user->image;
         }
     
@@ -187,7 +187,6 @@ class UserController extends Controller
     
     
 // app/Http/Controllers/UserController.php
-
 public function updatePassword(Request $request, $id)
 {
     $user = User::find($id);
@@ -196,19 +195,35 @@ public function updatePassword(Request $request, $id)
         return response()->json(['error' => 'User not found'], 404);
     }
 
-    // Validate the request
+
+    $customMessages = [
+        'current_password.required' => 'The current password field is required.',
+        'new_password.required' => 'The new password field is required.',
+        'new_password.min' =>'The password must contain at least one capital letter and one symbol (!@#$%^&*).',
+    ];
+
+
     $validator = Validator::make($request->all(), [
         'current_password' => 'required',
-        'new_password' => 'required|min:8',
-    ]);
+        'new_password' => [
+            'required',
+            'min:8',
+            'regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/',
+        ],
+    ], $customMessages);
 
     if ($validator->fails()) {
         return response()->json(['errors' => $validator->errors()->all()], 400);
     }
 
-    // Check if the current password is correct
+
     if (!Hash::check($request->input('current_password'), $user->password)) {
         return response()->json(['error' => 'Current password is incorrect'], 400);
+    }
+
+
+    if ($request->input('current_password') === $request->input('new_password')) {
+        return response()->json(['error' => 'New password cannot be the same as the old password'], 400);
     }
 
     // Update the password
@@ -217,7 +232,6 @@ public function updatePassword(Request $request, $id)
 
     return response()->json(['message' => 'Password updated successfully'], 200);
 }
-
     
 
     /**
