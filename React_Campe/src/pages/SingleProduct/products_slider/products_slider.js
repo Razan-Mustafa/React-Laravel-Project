@@ -238,10 +238,10 @@ function ImageGallery({ package_id }) {
                 </div>
             ))}
 
-            <a className="prev" onClick={() => plusSlides(-1)}>
+            <a className="prev1" onClick={() => plusSlides(-1)}>
                 &#10094;
             </a>
-            <a className="next" onClick={() => plusSlides(1)}>
+            <a className="next1" onClick={() => plusSlides(1)}>
                 &#10095;
             </a>
 
