@@ -45,9 +45,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($package_id)
     {
-        //
+        $products = Product::with('package')->where('package_id', $package_id)->get();
+        return response()->json($products);
     }
 
     /**

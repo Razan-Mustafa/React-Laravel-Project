@@ -15,8 +15,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
-        return response()->json($reviews);
+        // $reviews = Review::all();
+        // return response()->json($reviews);
         
     }
 
@@ -68,7 +68,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $reviews = Review::where('package_id',$id)->get();
+        $reviews = Review::with('user')->where('package_id', $id)->get();
         return response()->json($reviews);
     }
 
@@ -104,8 +104,8 @@ class ReviewController extends Controller
             return response()->json(['errors' => $validator->errors()->all() ]);
         }
 
-        $review->comment = $request->comment;
-        $review->rate = $request->rate;
+        $review->comment = $request->commentupdate;
+        $review->rate = $request->rateupdate;
         $review->date = $request->date;
         $review->user_id = $request->user_id;
         $review->package_id = $request->package_id;

@@ -56,7 +56,7 @@ function CounterComponent() {
     <div className="icon-block-center icon-center-v2 bg-primary">
       <div className="container text-center space-1">
         <div className="row">
-          <div className="col-md-3">
+          {/* <div className="col-md-3">
             <i className="flaticon-node text-white font-size-80 mb-3"></i>
             <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
               {boatCount}
@@ -64,9 +64,9 @@ function CounterComponent() {
             <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
             Number of Licensed Yachting Professionals
             </p>
-          </div>
+          </div> */}
 
-          <div className="col-md-3">
+          {/* <div className="col-md-3">
             <i className="flaticon-cardinal-points text-white font-size-80 mb-3"></i>
             <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
               {locationCount}
@@ -74,8 +74,8 @@ function CounterComponent() {
             <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
             The count of places providing these services
             </p>
-          </div>
-
+          </div> */}
+{/* 
           <div className="col-md-3">
             <i className="flaticon-anchor text-white font-size-80 mb-3"></i>
             <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
@@ -84,9 +84,9 @@ function CounterComponent() {
             <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
             Number of yachats
             </p>
-          </div>
+          </div> */}
 
-          <div className="col-md-3">
+          {/* <div className="col-md-3">
             <i className="flaticon-star text-white font-size-80 mb-3"></i>
             <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
               {professionalCount}
@@ -94,7 +94,7 @@ function CounterComponent() {
             <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
             Customer satisfied
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

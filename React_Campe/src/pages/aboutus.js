@@ -4,12 +4,12 @@ import img4 from "./boat1.jpg";
 import img5 from "./boat2.jpg";
 import img6 from "./boat3.jpg";
 import img7 from "./boat4.jpg";
-import shatha from "./shatha.jpg";
-import sereen from "./sereen.jpg";
-import rama from "./rama.jpg";
-import noor from "./noor.jpg";
-import yousef from "./mawlana.jpg";
-import ahmad from "./noor.jpg";
+// import shatha from "./shatha.jpg";
+// import sereen from "./sereen.jpg";
+// import rama from "./rama.jpg";
+// import noor from "./noor.jpg";
+// import yousef from "./mawlana.jpg";
+// import ahmad from "./noor.jpg";
 import CounterComponent from "./home/counter";
 
 export default function Aboutus() {
@@ -307,7 +307,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={shatha} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={shatha} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
@@ -348,7 +348,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={sereen} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={sereen} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
@@ -389,7 +389,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={noor} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={noor} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
@@ -430,7 +430,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={rama} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={rama} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
@@ -471,7 +471,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={yousef} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={yousef} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
@@ -512,7 +512,7 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={ahmad} alt="Image-Descrition" style={{width:'200px'}}/>
+                    {/* <img src={ahmad} alt="Image-Descrition" style={{width:'200px'}}/> */}
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
