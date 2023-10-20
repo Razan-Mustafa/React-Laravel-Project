@@ -2,13 +2,19 @@ import { data } from "jquery";
 import React from "react";
 import { setStatus } from "react";
 import yacht from "./yacht (1).png";
-import { BrowserRouter as Router, Route,useNavigate, Link, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  useNavigate,
+  Link,
+  Routes,
+} from "react-router-dom";
 
 function Navbar() {
-  const data = localStorage.getItem("user_id")
+  const data = localStorage.getItem("user_id");
   // const logindata = JSON.parse(data);
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   const handelLogout = () => {
     // logindata.id = "";
     // logindata.status = false;
@@ -23,17 +29,17 @@ function Navbar() {
   const myStyle = {
     minWidth: "230px",
   };
-const mybackground = {
-  background: "white",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // This adds a simple box shadow
-};
+  const mybackground = {
+    background: "white",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // This adds a simple box shadow
+  };
 
-const mytext = {
-  color: "#637E4C",
-};
-const mytext2 = {
-  color: "white",
-};
+  const mytext = {
+    color: "#637E4C",
+  };
+  const mytext2 = {
+    color: "white",
+  };
   const myStyle2 = {
     width: "500px",
     animationDuration: "300ms",
@@ -42,51 +48,41 @@ const mytext2 = {
   return (
     <div>
       {localStorage.getItem("user_id") ? (
-      <header  style={mybackground}
-      id="header"
-      className="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
-      data-header-fix-moment="500"
-      data-header-fix-effect="slide">
-    <div className="u-header__section u-header__shadow-on-show-hide ">
+        <header
+          style={mybackground}
+          id="header"
+          className="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
+          data-header-fix-moment="500"
+          data-header-fix-effect="slide"
+        >
+          <div className="u-header__section u-header__shadow-on-show-hide ">
             <div id="logoAndNav" className="container-fluid ">
               <nav
                 style={mytext}
                 className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1"
               >
-                {/* <a
-                  className="navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white"
-                  href="../home/index.html"
-                  aria-label="MyYacht"
-                  style={mytext}
-                >
-<img src={yacht}  style={{ width: '90px' ,height:'75px'}}></img>
-
-                  <span className="u-header__navbar-brand-text" style={mytext}>
-                    CAMPE
-                  </span>
-                </a> */}
+              
 
                 <a
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center"
-                  href="../home/index.html"
+                  
+                  href="#"
                   aria-label="MyYacht"
                 >
-
-<img
-                      src="/assets/img/qqqqqqq.png"
-                      alt="Logo"
-                      style={{
-                        width: "100px",
-                        height: "",
-                        marginBottom: "0",
-                        display: "inline-block",
-                      }}
-                    />
+                  <img
+                    src="/assets/img/qqqqqqq.png"
+                    alt="Logo"
+                    style={{
+                      width: "100px",
+                      height: "",
+                      marginBottom: "0",
+                      display: "inline-block",
+                    }}
+                  />
                   <span className="u-header__navbar-brand-text" style={mytext}>
                     CAMPE
                   </span>
                 </a>
-
 
                 <button
                   type="button"
@@ -176,7 +172,7 @@ const mytext2 = {
                       data-max-width="722px"
                       data-position="right"
                     >
-                      <Link
+                      {/* <Link
                         style={mytext}
                         id="pagesMegaMenu"
                         className="nav-link u-header__nav-link "
@@ -186,37 +182,47 @@ const mytext2 = {
                         aria-expanded="false"
                       >
                         Blog
-                      </Link>
+                      </Link> */}
+                    </li>
+
+                    <li>
+                      <a
+                        style={mytext}
+                        className="nav-link u-header__nav-link "
+                        href="/home#category"
+                      >
+                        {" "}
+                        Category
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
-          <Link
-            class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
-            to={"/profile"}
-          >
-            <span style={mytext2} class="d-inline-block">
-              Profile
-            </span>
-          </Link>
-        </div>
-        <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
-          <Link
-            class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
-            onClick={handelLogout}
-         
-          >
-            <span style={mytext2} class="d-inline-block">
-             Logout
-            </span>
-          </Link>
-        </div>
+                  <Link
+                    class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
+                    to={"/profile"}
+                  >
+                    <span style={mytext2} class="d-inline-block">
+                      Profile
+                    </span>
+                  </Link>
+                </div>
+                <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
+                  <Link
+                    class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
+                    onClick={handelLogout}
+                  >
+                    <span style={mytext2} class="d-inline-block">
+                      Logout
+                    </span>
+                  </Link>
+                </div>
               </nav>
             </div>
           </div>
-      {/* <button onClick={handelLogout}>Logout</button> */}
-    </header>
-  ) : (
+          {/* <button onClick={handelLogout}>Logout</button> */}
+        </header>
+      ) : (
         <header
           style={mybackground}
           id="header"
@@ -334,8 +340,6 @@ const mytext2 = {
                       ></ul>
                     </li>
 
-                   
-
                     <Link
                       style={mytext}
                       id="yachtMenu"
@@ -376,7 +380,7 @@ const mytext2 = {
                       data-max-width="722px"
                       data-position="right"
                     >
-                      <Link
+                      {/* <Link
                         style={mytext}
                         id="pagesMegaMenu"
                         className="nav-link u-header__nav-link "
@@ -386,30 +390,40 @@ const mytext2 = {
                         aria-expanded="false"
                       >
                         Blog
-                      </Link>
+                      </Link> */}
+                    </li>
+                    <li>
+                      <a
+                        style={mytext}
+                        className="nav-link u-header__nav-link "
+                        href="/home#category"
+                      >
+                        {" "}
+                        Category
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
-          <Link
-            class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
-            to={"/login"}
-          >
-            <span style={mytext2} class="d-inline-block">
-              Login
-            </span>
-          </Link>
-        </div>
-        <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
-          <Link
-            class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
-            to={"/register"}
-          >
-            <span style={mytext2} class="d-inline-block">
-              Register
-            </span>
-          </Link>
-        </div>
+                  <Link
+                    class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
+                    to={"/login"}
+                  >
+                    <span style={mytext2} class="d-inline-block">
+                      Login
+                    </span>
+                  </Link>
+                </div>
+                <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
+                  <Link
+                    class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
+                    to={"/register"}
+                  >
+                    <span style={mytext2} class="d-inline-block">
+                      Register
+                    </span>
+                  </Link>
+                </div>
               </nav>
             </div>
           </div>

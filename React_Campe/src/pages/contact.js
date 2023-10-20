@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from "./boat1.jpg";
+// import img1 from "./boat1.jpg";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
 
 export default function Contact() {

@@ -66,7 +66,7 @@ function SingleProduct($id) {
       <img
         src={productImage}
         alt="Product Image"
-        style={{ width: '100%', height: '250px', objectFit: 'cover' }}
+        style={{ width: '100%', height: '300px', objectFit: 'cover' }}
       />
     </div>
     
@@ -161,7 +161,7 @@ function SingleProduct($id) {
                   </div>
                 </div>
               </div>
-              <div class="border border-color-7 rounded p-4 mb-5">
+              {/* <div class="border border-color-7 rounded p-4 mb-5">
                 <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">
                   Why Book With Us?
                 </h6>
@@ -189,7 +189,7 @@ function SingleProduct($id) {
                     <a href="#">Free Travel Insureance</a>
                   </h6>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

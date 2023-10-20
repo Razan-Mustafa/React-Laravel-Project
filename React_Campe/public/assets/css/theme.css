@@ -22914,12 +22914,12 @@ a.text-violet-light:focus {
 }
 
 .text-brown-light {
-  color: #ceac61 !important;
+  /* color: #ceac61 !important; */
 }
 
 a.text-brown-light:hover,
 a.text-brown-light:focus {
-  color: #ad8836 !important;
+  color: #637E4C !important;
 }
 
 .text-brown {
@@ -45337,7 +45337,7 @@ Letter Spacing
 }
 
 .color-hover:hover {
-  background: #ceac61 !important;
+    background: #637E4C !important;
 }
 
 .color-hover:hover i,
@@ -46254,3 +46254,13 @@ box-shadow: -1px 1px 27px -2px rgba(0,0,0,0.76);
   -moz-box-shadow: -1px 1px 27px -2px rgba(0,0,0,0.45);
   box-shadow: -1px 1px 27px -2px rgba(0,0,0,0.76);
 }
+
+
+
+
+
+
+
+ 
+
+

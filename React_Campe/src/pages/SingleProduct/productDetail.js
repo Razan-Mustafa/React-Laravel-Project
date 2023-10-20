@@ -57,6 +57,14 @@ useEffect(() => {
         <div className="col-md-6">
           <div className="sigma_team-thumb">
              <Slider package_id = {package_id}/>
+
+             <img
+                src= {"http://127.0.0.1:8000/photo/" + details.image}
+                alt="Selected Image"
+                width="170"
+                height="170"
+                className="rounded-circle mt-2"
+              />
           </div>
         </div>
         <div className="col-md-6">
