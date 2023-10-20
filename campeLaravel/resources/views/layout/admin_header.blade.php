@@ -7,18 +7,18 @@
     <title>@yield('title')</title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="../assets/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{ url('assets/modules/bootstrap/css/bootstrap.min.css ') }}">
+    <link rel="stylesheet" href="{{ url('assets/modules/fontawesome/css/all.min.css ') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="../assets/modules/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="../assets/modules/summernote/summernote-bs4.css">
-    <link rel="stylesheet" href="../assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ url('assets/modules/jqvmap/dist/jqvmap.min.css ') }}">
+    <link rel="stylesheet" href="{{ url('assets/modules/summernote/summernote-bs4.css ') }}">
+    <link rel="stylesheet" href="{{ url('assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css ') }}">
+    <link rel="stylesheet" href="{{ url('assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css ') }}">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="{{ url('assets/css/style.css ') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/components.css ') }}">
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -125,7 +125,7 @@
                             <div class="dropdown-list-content dropdown-list-message">
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="assets/img/avatar/avatar-1.png"
+                                        <img alt="image" src="{{ url('assets/img/avatar/avatar-1.png ') }}"
                                             class="rounded-circle">
                                         <div class="is-online"></div>
                                     </div>
@@ -137,7 +137,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="assets/img/avatar/avatar-2.png"
+                                        <img alt="image" src="{{ url('assets/img/avatar/avatar-2.png ') }}"
                                             class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
@@ -148,7 +148,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="assets/img/avatar/avatar-3.png"
+                                        <img alt="image" src="{{ url('assets/img/avatar/avatar-3.png ') }}"
                                             class="rounded-circle">
                                         <div class="is-online"></div>
                                     </div>
@@ -160,7 +160,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="assets/img/avatar/avatar-4.png"
+                                        <img alt="image" src="{{ url('assets/img/avatar/avatar-4.png ') }}"
                                             class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
@@ -171,7 +171,7 @@
                                 </a>
                                 <a href="#" class="dropdown-item">
                                     <div class="dropdown-item-avatar">
-                                        <img alt="image" src="assets/img/avatar/avatar-5.png"
+                                        <img alt="image" src="{{ url('assets/img/avatar/avatar-5.png ') }}"
                                             class="rounded-circle">
                                     </div>
                                     <div class="dropdown-item-desc">
@@ -248,7 +248,8 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <img alt="image" src="{{ url('assets/img/avatar/avatar-1.png ') }}"
+                                class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -270,3 +271,39 @@
                     </li>
                 </ul>
             </nav>
+
+
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="index.html">Campe</a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a href="index.html">St</a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Dashboard</li>
+                        <li class="dropdown active">
+                            <a href="#" class="nav-link has-dropdown"><i
+                                    class="fas fa-fire"></i><span>Dashboard</span></a>
+                            <ul class="dropdown-menu">
+                                <li class=active><a class="nav-link" href="/"> Home Dashboard</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_admin.index')}}">Admin</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_user.index')}}">User</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_categories.index')}}">Category</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_package.index')}}">Package</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_product.index')}}">product</a></li>
+                                <li><a class="nav-link" href="{{route ('admin_booking.index')}}">Booking</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    {{-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+                        <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                            <i class="fas fa-rocket"></i> Documentation
+                        </a>
+                    </div> --}}
+                </aside>
+            </div>
