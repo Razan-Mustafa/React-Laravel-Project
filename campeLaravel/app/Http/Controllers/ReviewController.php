@@ -15,9 +15,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        // $reviews = Review::all();
-        // return response()->json($reviews);
-        
+        $reviews = Review::all();
+        return response()->json($reviews);
     }
 
     /**
@@ -47,7 +46,7 @@ class ReviewController extends Controller
         );
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all() ]);
+            return response()->json(['errors' => $validator->errors()->all()]);
         }
 
 
@@ -94,14 +93,12 @@ class ReviewController extends Controller
     {
         $validator = Validator::make(
             $request->all(),
-            [
-                
-            ]
+            []
 
         );
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all() ]);
+            return response()->json(['errors' => $validator->errors()->all()]);
         }
 
         $review->comment = $request->commentupdate;

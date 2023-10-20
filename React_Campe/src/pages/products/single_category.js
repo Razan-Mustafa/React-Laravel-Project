@@ -23,7 +23,7 @@ function Packages() {
   const navigate = useNavigate();
 
   const handleButtonClick = (id) => {
-    navigate(`/package/${id}`);
+    navigate(`/category/${id}`);
   };
 
   useEffect(() => {

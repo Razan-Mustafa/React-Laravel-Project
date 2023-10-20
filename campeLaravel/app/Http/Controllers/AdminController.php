@@ -37,9 +37,18 @@ class AdminController extends Controller
     public function store(Request $request)
     {
 
-        
+        $relativeImagePath = null;
 
-        $admin = Admin::create($request->all());
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $relativeImagePath = '/' . $newImageName;
+        }
+        
+        // Create a new Admin record and set the 'image' field to the path
+        $admin = new Admin($request->all());
+        $admin->image = $relativeImagePath;
         $adminId = $admin->id;
         $admin->save();
 
@@ -54,11 +63,23 @@ class AdminController extends Controller
 
     public function update(Request $request, Admin $admin_admin)
     {
-        $admin_admin->update($request->all());
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+    
+        // Check if a file has been uploaded and update the image if necessary
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $admin_admin->image = '/' . $newImageName;
+        }
+    
+        $admin_admin->update($request->except('image'));
+    
         return redirect(route('admin_admin.index'))->with('success', 'Admin updated successfully.');
     }
-
+    
 
 
     public function destroy($id)

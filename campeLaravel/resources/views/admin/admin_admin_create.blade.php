@@ -16,7 +16,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin_admin.store') }}" method="POST">
+                                <form action="{{ route('admin_admin.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group">
@@ -27,7 +27,6 @@
 
                                     <div class="form-group">
                                         <label for="image">Image URL</label>
-
                                         <input type="file"name="image" id="image" class="form-control">
                                     </div>
 

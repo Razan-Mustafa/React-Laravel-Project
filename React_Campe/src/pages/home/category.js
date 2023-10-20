@@ -18,7 +18,7 @@ function Category() {
   }, []);
 
   return (
-    <div className="destination-block destination-v5 border-bottom border-color-8">
+    <div id="category" className="destination-block destination-v5 border-bottom border-color-8">
       <div className="container space-1">
         <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mt-3">
           <h2 className="section-title text-black font-size-30 font-weight-bold mb-0">
@@ -49,7 +49,6 @@ function Category() {
                         {category.name}
                       </a>
                     </div>
-
                     <div className="pb-3 text-lh-1">
                       <p
                         className="text-white font-weight-bold font-size-21"
@@ -79,4 +78,3 @@ function Category() {
 }
 
 export default Category;
-
