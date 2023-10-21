@@ -37,6 +37,7 @@ function Category() {
               <div
                 className="min-height-350 bg-img-hero rounded-border p-5 gradient-overlay-half-bg-gradient transition-3d-hover shadow-hover-2"
                 style={{
+                  
                   backgroundImage: `url(http://127.0.0.1:8000/photo/${category.image})`,
                 }}
                  onClick={() => handleButtonClick(category.id)}
