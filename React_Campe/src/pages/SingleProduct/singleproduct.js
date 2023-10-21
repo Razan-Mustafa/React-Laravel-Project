@@ -6,18 +6,22 @@ import Reviews from "./ReviewRedux/componentReview";
 import Details from "./productDetail";
 import Slider from "./products_slider/products_slider";
 import productImage from './singlephoto2.jpg'; // Import your image
+import { useParams } from 'react-router-dom';
 
 
-function SingleProduct($id) {
+
+function SingleProduct() {
   const [details, setDetails] = useState([]);
-  const [selectedDays, setSelectedDays] = useState(1); // State to hold selected number of days
+  const [selectedDays, setSelectedDays] = useState(1);
   const [updatedPrice, setUpdatedPrice] = useState(0);
   const navigate = useNavigate();
-
+  const { id } = useParams();
+  console.log('my test');
+console.log(id);
   useEffect(() => {
     const getProductDetails = () => {
       axios
-        .get(`http://127.0.0.1:8000/api/packages/1`)
+        .get(`http://127.0.0.1:8000/api/packages/${id}`)
         .then((response) => {
           setDetails(response.data[0]);
           console.log(response.data[0].name);
@@ -26,7 +30,7 @@ function SingleProduct($id) {
     };
 
     getProductDetails();
-  }, []);
+  }, [id]);
 
   // price / day
   useEffect(() => {
@@ -53,10 +57,9 @@ function SingleProduct($id) {
     const numberOfDays = selectedDays;
     const price = updatedPrice;
     const selectedDate = document.getElementById("startDate").value;
+    // const packageName = details.name;
+    const url = `/booking/${numberOfDays}/${selectedDate}/${price}/${details.name}/${details.image}/${details.id}`;
 
-    const url = `/booking?days=${numberOfDays}&date=${selectedDate}&price=${price}`;
-
-    // Navigate to the other page
     navigate(url);
   };
 
@@ -76,7 +79,7 @@ function SingleProduct($id) {
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-xl-9">
-            <Details />
+            <Details id = {id}/>
             <div class="py-4 border-top border-bottom mb-4">
               <ul class="list-group list-group-borderless list-group-horizontal flex-center-between text-center mx-md-4 flex-wrap">
                 <li class="list-group-item text-lh-sm ">
@@ -99,7 +102,7 @@ function SingleProduct($id) {
                 </li>
               </ul>
             </div>
-            <Reviews />
+            <Reviews id = {id}/>
           </div>
 
           <div class="col-lg-4 col-xl-3">

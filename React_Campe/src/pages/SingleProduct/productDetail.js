@@ -9,11 +9,12 @@ const ProductDetails = ({ id }) => {
   const [details, setDetails] = useState([]);
   const [rating, setRating] = useState([]);
   const [averageRating, setAverageRating] = useState(2);
-
+  console.log('idddddddddddddddddddddddddd');
+console.log(id);
   useEffect(() => {
     const getProductDetails = () => {
       axios
-        .get(`http://127.0.0.1:8000/api/packages/${id}`)
+        .get(`http://127.0.0.1:8000/api/packages/${id}`) 
         .then((response) => {
           setDetails(response.data[0]);
           console.log(response.data[0].name);
@@ -24,14 +25,16 @@ const ProductDetails = ({ id }) => {
     getProductDetails();
   }, [id]);
 
-  // rate
-  useEffect(() => {
-    const getReviews = () => {
-      axios
-        .get(`http://127.0.0.1:8000/api/reviews/1`)
-        .then((response) => {
-          const reviews = response.data;
-          setRating(reviews);
+// rate 
+useEffect(() => {
+  const getReviews = () => {
+    axios
+      .get(`http://127.0.0.1:8000/api/reviews/${id}`)
+      .then((response) => {
+        console.log('in detaillsss');
+        console.log(response);
+        const reviews = response.data;
+        setRating(reviews);
 
           // Calculate the average rating
           const totalRating = reviews.reduce(

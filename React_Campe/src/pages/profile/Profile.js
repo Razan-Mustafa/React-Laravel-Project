@@ -115,39 +115,54 @@ useEffect(() => {
 //     }
 // };
 
-const SaveInfo = async () => {
+
+const handleProfileUpdate = async (e) => {
+  e.preventDefault();
   const formData = new FormData();
   formData.append("name", userData.name);
   formData.append("phone", userData.phone);
   formData.append("email", userData.email);
   formData.append("address", userData.address);
-  
-  // Check if an image has been selected and add it to the form data if yes
+
   if (imageInput.current && imageInput.current.files.length > 0) {
     formData.append("image", imageInput.current.files[0]);
   }
 
   try {
     const response = await axios.post(
-      `http://127.0.0.1:8000/api/edit_profile/` + id,
+      `http://127.0.0.1:8000/api/edit_profile/${id}`,
       formData
     );
 
     if (response.status === 200) {
-      alert("Data Updated Successfully");
-    } else {
-      alert("There is something wrong");
+      // Assuming your response contains the URL of the updated image
+      const newImageUrl = response.data.imageUrl;
+    
+      // Update the image source
+      const profileImage = document.getElementById("profileImage");
+      if (profileImage) {
+        profileImage.src = newImageUrl;
+      }
+    
+      Swal.fire({
+        title: 'Success',
+        text: 'Data Updated Successfully',
+        icon: 'success',
+      });
     }
+    
   } catch (error) {
+    Swal.fire({
+      title: 'Error',
+      text: 'Error updating data',
+      icon: 'error',
+    });
     console.error("Error updating data:", error);
   }
-};
+
+}
 
 
-
-  useEffect(() => {
-    SaveInfo();
-  }, []);
   const [passwordData, setPasswordData] = useState({
     password: '',
     newPassword: '',
@@ -157,7 +172,7 @@ const SaveInfo = async () => {
     e.preventDefault();
   
     const requestData = {
-      current_password: passwordData.currentPassword, // Include the current password field
+      current_password: passwordData.currentPassword,
       new_password: passwordData.newPassword,
     };
   
@@ -165,27 +180,46 @@ const SaveInfo = async () => {
       const response = await axios.put(`http://127.0.0.1:8000/api/eng/${id}`, requestData);
   
       if (response.status === 200) {
-        alert('Password updated successfully');
+  
+        Swal.fire({
+          title: 'Success',
+          text: 'Password updated successfully',
+          icon: 'success',
+        });
         setPasswordData({
           currentPassword: '',
           newPassword: '',
         });
-      } else {
-        alert('Failed to update password');
-      }
+      } 
     } catch (error) {
       console.error('Error updating password:', error);
-      console.log('Response data:', error.response.data); // Log response data for debugging
+      if (error.response.status === 400) {
+        Swal.fire({
+          title: 'Validation Error',
+          html: error.response.data.errors.join('<br>'), 
+          icon: 'error',
+        });
+      } else {
+
+        Swal.fire({
+          title: 'Error',
+          text: 'An error occurred while updating the password',
+          icon: 'error',
+        });
+      }
     }
   };
+  
+
+  
   
   
 
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    // Make an API call to fetch the data from your Laravel backend
-    axios.get(`http://127.0.0.1:8000/api/book/${id}`) // Adjust the API endpoint URL as needed
+  
+    axios.get(`http://127.0.0.1:8000/api/book/${id}`)
       .then(response => {
         setBookings(response.data);
       })
@@ -203,7 +237,7 @@ const SaveInfo = async () => {
     
 <div>
 
-<div className="container rounded bg-white  profile">
+<div className="container rounded bg-white  profile mt-17" >
 
         <div className="row">
             <div className="col-md-4 border-right mt-5 ">
@@ -258,7 +292,7 @@ Welcome {userData.name}</h1>
                         </div>
                         <h6 className="text-right">Edit Profile</h6>
                     </div>
-                    <form action="" onSubmit={SaveInfo}>
+                    <form onSubmit={handleProfileUpdate}>
                     <div className="row mt-2">
                         <div className="col-md-6"><input onChange={(e) =>
                             setUserData((prev) => ({
@@ -316,12 +350,12 @@ Welcome {userData.name}</h1>
                                 <div className="mt-5 text-right"><input id="input7Save" type="submit" className="btn btn-primary profile-button" value="Save" /></div> 
                           </form>
                           <div className="d-flex flex-row align-items-center back"><i className="fa fa-long-arrow-left mr-1 mb-1"></i>
-                            <h6>Change Password</h6>
+                            <h6 className='mr-4'>Change Password</h6>
                         </div>
                         <form onSubmit={handlePasswordUpdate}>
                         <div className="row mt-1">
                         <div className="col-md-12">
-    <label htmlFor="currentPassword">Current Password</label>
+                        {/* <label htmlFor="currentPassword" style={{ fontSize: 12 }}>Current Password</label> */}
     <input
       type="password"
       id="currentPassword"
@@ -335,12 +369,13 @@ Welcome {userData.name}</h1>
       }
       required
       className="form-control" 
+      placeholder='Current Password'
     />
   </div>
   </div>
   <div className="row mt-2">
   <div className="col-md-12">
-    <label htmlFor="newPassword">New Password</label>
+    {/* <label htmlFor="newPassword">New Password</label> */}
     <input
       type="password"
       id="newPassword"
@@ -354,6 +389,7 @@ Welcome {userData.name}</h1>
       }
       required
       className="form-control" 
+      placeholder='New Password'
     />
   </div>
   </div>
@@ -430,5 +466,5 @@ Welcome {userData.name}</h1>
 
 </div>
 
-    );
+  );
 }
