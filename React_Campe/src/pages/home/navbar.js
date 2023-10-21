@@ -1,8 +1,7 @@
 import { data } from "jquery";
 import React from "react";
 import { setStatus } from "react";
-import yacht from "./yacht (1).png";
-import {
+ import {
   BrowserRouter as Router,
   Route,
   useNavigate,
@@ -61,11 +60,8 @@ function Navbar() {
                 style={mytext}
                 className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1"
               >
-              
-
                 <a
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center"
-                  
                   href="#"
                   aria-label="MyYacht"
                 >
@@ -132,6 +128,16 @@ function Navbar() {
                       ></ul>
                     </li>
 
+                    <li>
+                      <a
+                        style={mytext}
+                        className="nav-link u-header__nav-link "
+                        href="/home#category"
+                      >
+                        {" "}
+                        Category
+                      </a>
+                    </li>
                     <Link
                       style={mytext}
                       id="yachtMenu"
@@ -171,30 +177,7 @@ function Navbar() {
                       data-animation-out="fadeOut"
                       data-max-width="722px"
                       data-position="right"
-                    >
-                      {/* <Link
-                        style={mytext}
-                        id="pagesMegaMenu"
-                        className="nav-link u-header__nav-link "
-                        to={"/blog"}
-                        href="javascript:;"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Blog
-                      </Link> */}
-                    </li>
-
-                    <li>
-                      <a
-                        style={mytext}
-                        className="nav-link u-header__nav-link "
-                        href="/home#category"
-                      >
-                        {" "}
-                        Category
-                      </a>
-                    </li>
+                    ></li>
                   </ul>
                 </div>
                 <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
@@ -339,6 +322,16 @@ function Navbar() {
                         style={myStyle}
                       ></ul>
                     </li>
+                    <li>
+                      <a
+                        style={mytext}
+                        className="nav-link u-header__nav-link "
+                        href="/home#category"
+                      >
+                        {" "}
+                        Category
+                      </a>
+                    </li>
 
                     <Link
                       style={mytext}
@@ -391,16 +384,6 @@ function Navbar() {
                       >
                         Blog
                       </Link> */}
-                    </li>
-                    <li>
-                      <a
-                        style={mytext}
-                        className="nav-link u-header__nav-link "
-                        href="/home#category"
-                      >
-                        {" "}
-                        Category
-                      </a>
                     </li>
                   </ul>
                 </div>

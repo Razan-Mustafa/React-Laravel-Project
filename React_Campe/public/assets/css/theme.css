@@ -7870,6 +7870,7 @@ input[type="button"].btn-block {
 
 .custom-radio .custom-control-label::before {
   border-radius: 50%;
+  border: gray 1px solid;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
@@ -8815,8 +8816,10 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #e7eaf3;
+  /* border: 1px solid green; */
+  border-bottom: 1px solid #999;
   border-radius: 0.3125rem;
+  padding: 10px 0;
 }
 
 .card > hr {
@@ -13180,7 +13183,9 @@ button.bg-purple-1:focus {
 }
 
 .border {
-  border: 1px solid #e7eaf3 !important;
+   border: 2px solid whitesmoke  !important;
+    /* border-right: 1px solid gray  !important; */
+
 }
 
 .border-top {
@@ -36309,7 +36314,7 @@ label.btn {
 
 .btn-social {
   color: #67747c;
-  border-color: #ebf0f7;
+  /* border-color: #ebf0f7; */
   border-width: 2px;
   border-radius: 6.1875rem;
   height: 2.5rem !important;
@@ -44264,7 +44269,7 @@ label.btn {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
-  align-items: center;
+ 
 }
 
 /* Vertical Center Alignment */
@@ -45235,8 +45240,10 @@ Font Weight
 }
 
 .font-weight-bold {
-  font-weight: 500 !important;
+  /* font-weight: 500 !important; */
+  
 }
+/* sami */
 
 @media (max-width: 575.98px) {
   .font-size-xs-20 {
@@ -46229,7 +46236,7 @@ Letter Spacing
 }
 .footer {
   box-shadow: 2px 2px 2px 3px var(--blue);
-  background-color: #e7eaf3 !important;
+  background-color: black !important;
 }
 .hay{
    background-color: rgba(25, 160, 255, 0.11) !important;

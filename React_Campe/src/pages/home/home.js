@@ -7,12 +7,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Home() {
-  const [packages, setPackages] = useState([]);
 
-  const navigate = useNavigate();
-  const handleButtonClick = () => {
-    navigate(`/blog`);
-  };
+
+ const navigate = useNavigate();
+ const [packages, setPackages] = useState([]);
+ const handleButtonClick = (id) => {
+   navigate(`/package/${id}`);
+ };
+
+
+  
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -51,18 +56,13 @@ function Home() {
                   <a className="d-block">
                     <div className="color-hover py-4 px-3 bg-gray-4 rounded-xs text-center transition-3d-hover shadow-hover-2">
                       <img
-                        src={packages.image}
+                        src={"http://127.0.0.1:8000/photo/" + packages.image}
                         alt="Image"
-                        style={{ maxWidth: "100%", height: "auto" }}
+                        style={{ width: "100vw", height: "250px" }}
+                        onClick={() => handleButtonClick(packages.id)}
                       />
 
-                      {/* <img
-                        src={
-                          "http://127.0.0.1:8000/api" + packages.image
-                        }
-                        alt="Image"
-                        style={{ maxWidth: "100%", height: "auto" }}
-                      /> */}
+                    
 
                       <h6 className="font-size-17 text-gray-3 font-weight-bold">
                         {packages.name}
@@ -79,7 +79,7 @@ function Home() {
         </div>
       </div>
 
-   
+      
     </div>
   );
 }

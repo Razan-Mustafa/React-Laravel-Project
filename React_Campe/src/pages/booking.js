@@ -1,203 +1,169 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Booking() {
   const navigate = useNavigate();
+  const { days, date, price, packageName, packageImage, packageId } =
+    useParams();
+  const user_id = 1;
+  // const [userDetails, setUserDetails] = useState([]);
+  const [bookingDetails, setBookingDetails] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
+  console.log(packageName, packageImage);
+  console.log(days, date, price);
 
-  const userData = localStorage.getItem("user");
-  const user = JSON.parse(userData);
 
-  const cartData = localStorage.getItem("cart");
-  const cart = JSON.parse(cartData);
-  const startDate = new Date(cart[0].startDate);
-  const start = startDate.toISOString().slice(0, 10);
-  const endDate = new Date(cart[0].endDate);
-  const end = endDate.toISOString().slice(0, 10);
-  const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-  // const [bookingData, setBookingData] = useState([0]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setBookingDetails({ ...bookingDetails, [name]: value });
+  };
 
-  // console.log(startDate);
-  // const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    const fetchEventData = async () => {
-      try {
-        const response = await axios.get(
-          "https://651db05044e393af2d5a346e.mockapi.io/yachts"
-        );
-        if (response.status === 200) {
-          const book = response.data.filter(
-            (carts) => carts.id === cart[0].yachtId
-          );
-          // setBookingData(book);
-          console.log(book);
-        } else {
-        }
-      } catch (error) {}
+    const formData = {
+      name: bookingDetails.name,
+      date: date,
+      phone: bookingDetails.phone,
+      address: bookingDetails.address,
+      user_id: user_id,
+      package_id: packageId,
     };
+    console.log("wwwwwwwwwwwwwwwwwwwww");
+    console.log(formData);
 
-    const homePage = () => {
-      navigate("/");
-    };
+    axios
+      .post("http://127.0.0.1:8000/api/bookings", formData)
+      .then((response) => {
+        console.log("Booking successful!");
+        console.log(response);
+        Swal.fire({
+          icon: "success",
+          title: "Your Booking Submitted Successfully!",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      })
+      .catch((error) => {
+        console.error("Booking failed.", error);
+      });
+  };
 
-    fetchEventData();
 
-    return () => {};
-  }, []);
+
+
+// start date and period
+
+const startDate =new Date(date) ;
+const period = parseInt(days); 
+
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + period);
+
+const formattedEndDate = endDate.toISOString().split('T')[0];
+
+// console.log('Start Date:', startDate.toISOString().split('T')[0]);
+// console.log('End Date:', formattedEndDate);
 
   return (
     <>
       <main id="content" class="bg-gray space-2">
-        <div class="container">
-          <div
-            className="row"
-            style={{ display: "flex", alignItems: "center", height: "780px" }}
-          >
+        <div class="container" style={{ marginTop: "100px" }}>
+          <div className="row" style={{ display: "flex", height: "780px" }}>
             <div class="col-lg-8 col-xl-9 ">
               <div class="mb-5 shadow-soft bg-white rounded-sm">
                 <div class="py-6 px-5 border-bottom">
                   <div class="flex-horizontal-center">
-                    <div class="height-50 width-50 flex-shrink-0 flex-content-center bg-primary rounded-circle">
-                      <i class="flaticon-tick text-white font-size-24"></i>
-                    </div>
+                    <i
+                      class="fi fi-rr-info font-size-40"
+                      style={{ color: "#637E4C", marginTop: "8px" }}
+                    ></i>
                     <div class="ml-3">
                       <h3 class="font-size-18 font-weight-bold text-dark mb-0 text-lh-sm">
-                        Thank You. Your Booking Order is Confirmed Now.
+                        Your Information
                       </h3>
                       <p class="mb-0">
-                        A confirmation email has been sent to your provided
-                        email address.
+                        The delivery is estimated to arrive within 1 to 2 days
                       </p>
                     </div>
                   </div>
                 </div>
                 <div class="pt-4 pb-5 px-5 border-bottom">
-                  <h5
-                    id="scroll-description"
-                    class="font-size-21 font-weight-bold text-dark mb-2"
-                  >
-                    Traveler Information
-                  </h5>
-                  <ul class="list-unstyled font-size-1 mb-0 font-size-16">
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">Booking number</span>
-                      <span class="text-secondary text-right">5784-BD245</span>
-                    </li>
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <label>Name</label>
+                      <input
+                        name="name"
+                        type="text"
+                        value={bookingDetails.name}
+                        placeholder="Enter your name"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">First name</span>
-                      <span class="text-secondary text-right">
-                        {user.firstName}
-                      </span>
-                    </li>
+                    <div className="form-group">
+                      <label>Phone Number</label>
+                      <input
+                        name="phone"
+                        type="number"
+                        value={bookingDetails.phone}
+                        placeholder="Enter your phone number"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">Last name</span>
-                      <span class="text-secondary text-right">
-                        {user.lastName}
-                      </span>
-                    </li>
+                    <div className="form-group">
+                      <label>Address</label>
+                      <input
+                        name="address"
+                        type="text"
+                        value={bookingDetails.address}
+                        placeholder="Enter your address"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">E-mail address</span>
-                      <span class="text-secondary text-right">
-                        {user.email}
-                      </span>
-                    </li>
-
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">Yacht Name: </span>
-                      <span class="text-secondary text-right">
-                        {/* {bookingData[0].name} */}
-                      </span>
-                    </li>
-
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">Location</span>
-                      <span class="text-secondary text-right">
-                        {/* {bookingData[0].location} */}
-                      </span>
-                    </li>
-
-                    {/* <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">ZIP code</span>
-                      <span class="text-secondary text-right">75800-875</span>
-                    </li>
-
-                    <li class="d-flex justify-content-between py-2">
-                      <span class="font-weight-medium">Country</span>
-                      <span class="text-secondary text-right">
-                        United States of america
-                      </span>
-                    </li> */}
-                  </ul>
+                    <div style={{textAlign:'center'}}>
+                    <button
+                    style={{width:'200px'}}
+                      type="submit"
+                      class="btn btn-primary align-items-center font-weight-bold"
+                    >
+                      Book Now
+                    </button>
+                    </div>
+                  </form>
                 </div>
-                {/* <div class="pt-4 pb-5 px-5 border-bottom">
-                  <h5
-                    id="scroll-description"
-                    class="font-size-21 font-weight-bold text-dark mb-3"
-                  >
-                    Payment
-                  </h5>
-                  <p class="">
-                    Praesent dolor lectus, rutrum sit amet risus vitae,
-                    imperdiet cursus neque. Nulla tempor nec lorem eu suscipit.
-                    Donec dignissim lectus a nunc molestie consectetur. Nulla eu
-                    urna in nisi adipiscing placerat. Nam vel scelerisque magna.
-                    Donec justo urna, posuere ut dictum quis.
-                  </p>
-                  <a href="#" className="text-underline text-primary">
-                    Payment is made by Credit Card Via Paypal.
-                  </a>
-                  yarn add jquery
-                </div>
-                <div class="pt-4 pb-5 px-5">
-                  <h5
-                    id="scroll-description"
-                    class="font-size-21 font-weight-bold text-dark mb-3"
-                  >
-                    View Booking Details
-                  </h5>
-                  <p class="">
-                    Praesent dolor lectus, rutrum sit amet risus vitae,
-                    imperdiet cursus neque. Nulla tempor nec lorem eu suscipit.
-                    Donec dignissim lectus a nunc molestie consectetur. Nulla eu
-                    urna in nisi adipiscing placerat. Nam vel scelerisque magna.
-                    Donec justo urna, posuere ut dictum quis.
-                  </p>
-
-                  <a href="#" class="text-underline text-primary">
-                    https://www.mytravel.com/booking-details/?=f4acb19f-9542-4a5c-b8ee
-                  </a>
-                </div> */}
               </div>
-              <a
-                class="btn btn-primary"
-                onClick={() => {
-                  localStorage.removeItem("cart");
-                  navigate("/");
-                }}
-                style={{ textAlign: "center", color: "white" }}
-              >
-                Home Page
-              </a>
             </div>
-            <div class="col-lg-4 col-xl-3 " style={{ marginTop: "50px" }}>
+            <div class="col-lg-4 col-xl-3">
               <div class="shadow-soft bg-white rounded-sm">
                 <div class="pt-5 pb-4 px-5 border-bottom">
                   <a href="#" class="d-block mb-2">
                     <img
                       className="img-fluid rounded-sm"
-                      // src={bookingData[0].image1} // Corrected attribute name from avater to avatar
                       alt="Image-Description"
+                      src={
+                        "http://127.0.0.1:8000/photo/" + packageImage
+                        
+                      }                    
                     />
                   </a>
                   {/* {eventData.name} */}
                   <div class="flex-horizontal-center text-gray-1">
-                    <i class="icon flaticon-pin-1 mr-2 font-size-15"></i>{" "}
-                    {/* {bookingData[0].location} */}
+                    {packageName}
                   </div>
                 </div>
                 <div id="basicsAccordion">
@@ -240,37 +206,40 @@ function Booking() {
                             </span>
                           </li> */}
 
-                          <li className="d-flex justify-content-between py-2">
+                          {/* <li className="d-flex justify-content-between py-2">
                             <span className="font-weight-medium">
                               Nights :{" "}
                             </span>
                             <span className="text-secondary">
                               {cart[0].nights}
                             </span>
-                          </li>
+                          </li> */}
 
                           <li className="d-flex justify-content-between py-2">
                             <span className="font-weight-medium">From:</span>
-                            <span className="text-secondary">{start}</span>
+                            <span className="text-secondary">{date}</span>
                           </li>
 
                           <li className="d-flex justify-content-between py-2">
                             <span className="font-weight-medium">To:</span>
-                            <span className="text-secondary">{end}</span>
+                            <span className="text-secondary">{formattedEndDate}</span>
                           </li>
 
-                          {/* <li className="d-flex justify-content-between py-2">
-                            <span className="font-weight-medium">
-                              Est. Distance
-                            </span>
-                            <span className="text-secondary">50 kilometer</span>
-                          </li> */}
+                          <li className="d-flex justify-content-between py-2">
+                            <span className="font-weight-medium">Period</span>
+                            <span className="text-secondary">{days} days</span>
+                          </li>
+                          <hr style={{marginBottom:'0px' ,marginTop:'0px'  , border:' 1px solid gray'}}/>
+                          <li className="d-flex justify-content-between py-2" >
+                            <span className="font-weight-medium" style={{color: '#637E4C'}}>Total Price</span>
+                            <span className="font-weight-medium" style={{color: '#637E4C', important: true }}>{Math.floor(price)} JOD</span>
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
 
-                  <div class="card rounded-0 border-top-0 border-left-0 border-right-0">
+                  {/* <div class="card rounded-0 border-top-0 border-left-0 border-right-0">
                     <div
                       class="card-header card-collapse bg-transparent border-0"
                       id="basicsHeadingFour"
@@ -302,7 +271,6 @@ function Booking() {
                           <li class="d-flex justify-content-between py-2">
                             <span class="font-weight-medium">Subtotal</span>
                             <span class="text-secondary">
-                              JD{cart[0].totalPrice}
                             </span>
                           </li>
 
@@ -318,12 +286,11 @@ function Booking() {
 
                           <li class="d-flex justify-content-between py-2 font-size-17 font-weight-bold">
                             <span class="font-weight-bold">Pay Amount</span>JD
-                            {cart[0].totalPrice}
                           </li>
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
