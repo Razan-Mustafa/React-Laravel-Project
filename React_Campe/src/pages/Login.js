@@ -30,7 +30,7 @@ const Login = () => {
           localStorage.setItem("user_id", res.data.user.id);
           setIsLoggedIn(true);
           // Redirect to the home page or perform any other actions
-          navigate("/home");
+          navigate(-1);
         }
       })
       .catch((error) => {

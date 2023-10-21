@@ -13,10 +13,13 @@ export const fetchReviews = (packageId) => {
   };
   
   export const addReview = (reviewText) => {
+    console.log("add testtttttttttt");
+    console.log(reviewText);
     return async (dispatch) => {
       try {
         const response = await axios.post(`http://127.0.0.1:8000/api/reviews`, reviewText);
-        dispatch({ type: 'ADD_REVIEW_SUCCESS', payload: response.data });
+        // dispatch({ type: 'ADD_REVIEW_SUCCESS', payload: response.data });
+        // dispatch(fetchReviews(reviewText.package_id));
       } catch (error) {
         dispatch({ type: 'ADD_REVIEW_FAILURE', error });
       }
@@ -24,11 +27,13 @@ export const fetchReviews = (packageId) => {
   };
 
 export const updateReview = (review) => {
+  console.log("Helooooo44444444444444");
+  console.log(review);
   return async (dispatch) => {
     try {
       const response = await axios.put(`http://127.0.0.1:8000/api/reviews/${review.id}`, review);
-      dispatch({ type: 'UPDATE_REVIEW', payload: response.data });
-      dispatch(fetchReviews(review.package_id));
+      // dispatch({ type: 'UPDATE_REVIEW', payload: response.data });
+      // dispatch(fetchReviews(review.package_id));
       // Handle errors
     }catch (error) {
       // Handle errors

@@ -17,7 +17,9 @@ function Booking() {
   console.log(packageName, packageImage);
   console.log(days, date, price);
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,18 +60,18 @@ function Booking() {
 
 
 
-// start date and period
+  // start date and period
 
-const startDate =new Date(date) ;
-const period = parseInt(days); 
+  const startDate = new Date(date);
+  const period = parseInt(days);
 
-const endDate = new Date(startDate);
-endDate.setDate(startDate.getDate() + period);
+  const endDate = new Date(startDate);
+  endDate.setDate(startDate.getDate() + period);
 
-const formattedEndDate = endDate.toISOString().split('T')[0];
+  const formattedEndDate = endDate.toISOString().split('T')[0];
 
-// console.log('Start Date:', startDate.toISOString().split('T')[0]);
-// console.log('End Date:', formattedEndDate);
+  // console.log('Start Date:', startDate.toISOString().split('T')[0]);
+  // console.log('End Date:', formattedEndDate);
 
   return (
     <>
@@ -78,11 +80,11 @@ const formattedEndDate = endDate.toISOString().split('T')[0];
           <div className="row" style={{ display: "flex", height: "780px" }}>
             <div class="col-lg-8 col-xl-9 ">
               <div class="mb-5 shadow-soft bg-white rounded-sm">
-                <div class="py-6 px-5 border-bottom">
+                <div class="py-6 px-5 border-bottom" style={{paddingBottom: "10px"}}>
                   <div class="flex-horizontal-center">
                     <i
                       class="fi fi-rr-info font-size-40"
-                      style={{ color: "#637E4C", marginTop: "8px" }}
+                      style={{ color: "#637E4C", marginTop: "-10px" }}
                     ></i>
                     <div class="ml-3">
                       <h3 class="font-size-18 font-weight-bold text-dark mb-0 text-lh-sm">
@@ -94,7 +96,7 @@ const formattedEndDate = endDate.toISOString().split('T')[0];
                     </div>
                   </div>
                 </div>
-                <div class="pt-4 pb-5 px-5 border-bottom">
+                <div class="pt-4 pb-5 px-5 border-bottom" style={{ paddingTop: "0px" }}>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <label>Name</label>
@@ -135,14 +137,14 @@ const formattedEndDate = endDate.toISOString().split('T')[0];
                       />
                     </div>
 
-                    <div style={{textAlign:'center'}}>
-                    <button
-                    style={{width:'200px'}}
-                      type="submit"
-                      class="btn btn-primary align-items-center font-weight-bold"
-                    >
-                      Book Now
-                    </button>
+                    <div style={{ textAlign: 'center' }}>
+                      <button
+                        style={{ width: '200px' }}
+                        type="submit"
+                        class="btn btn-primary align-items-center font-weight-bold"
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -157,8 +159,8 @@ const formattedEndDate = endDate.toISOString().split('T')[0];
                       alt="Image-Description"
                       src={
                         "http://127.0.0.1:8000/photo/" + packageImage
-                        
-                      }                    
+
+                      }
                     />
                   </a>
                   {/* {eventData.name} */}
@@ -229,10 +231,10 @@ const formattedEndDate = endDate.toISOString().split('T')[0];
                             <span className="font-weight-medium">Period</span>
                             <span className="text-secondary">{days} days</span>
                           </li>
-                          <hr style={{marginBottom:'0px' ,marginTop:'0px'  , border:' 1px solid gray'}}/>
+                          <hr style={{ marginBottom: '0px', marginTop: '0px', border: ' 1px solid gray' }} />
                           <li className="d-flex justify-content-between py-2" >
-                            <span className="font-weight-medium" style={{color: '#637E4C'}}>Total Price</span>
-                            <span className="font-weight-medium" style={{color: '#637E4C', important: true }}>{Math.floor(price)} JOD</span>
+                            <span className="font-weight-medium" style={{ color: '#637E4C' }}>Total Price</span>
+                            <span className="font-weight-medium" style={{ color: '#637E4C', important: true }}>{Math.floor(price)} JOD</span>
                           </li>
                         </ul>
                       </div>

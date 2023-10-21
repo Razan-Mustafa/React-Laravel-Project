@@ -15532,7 +15532,7 @@ button.bg-purple-1:focus {
 
 .pt-4,
 .py-4 {
-  padding-top: 1.5rem !important;
+  padding-top: 1.5rem;
 }
 
 .pr-4,
@@ -15614,7 +15614,7 @@ button.bg-purple-1:focus {
 
 .pb-6,
 .py-6 {
-  padding-bottom: 2.5rem !important;
+  padding-bottom: 2.5rem;
 }
 
 .pl-6,
