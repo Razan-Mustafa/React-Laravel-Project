@@ -31,7 +31,7 @@ Route::resource('reviews', ReviewController::class);
 Route::resource('bookings', BookingController::class);
 Route::resource('packages', PackageController::class);
 Route::resource('contacts', ContactController::class);
-// Route::resource('users', UserController::class);
+Route::resource('users', UserController::class);
 
 
 

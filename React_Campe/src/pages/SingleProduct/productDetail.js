@@ -188,5 +188,3 @@ export default ProductDetails;
 //     </div>
 //   );
 // };
-
-// export default ProductDetails;
