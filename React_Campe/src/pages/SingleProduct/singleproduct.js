@@ -90,7 +90,7 @@ function SingleProduct() {
         <div class="row">
           <div class="col-lg-8 col-xl-9">
             <Details id={id} />
-            <div class="py-4 border-top border-bottom mb-4">
+            {/* <div class="py-4 border-top border-bottom mb-4">
               <ul class="list-group list-group-borderless list-group-horizontal flex-center-between text-center mx-md-4 flex-wrap">
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-ruler text-primary font-size-40 mb-1 d-block"></i>
@@ -111,7 +111,7 @@ function SingleProduct() {
                   <div class="text-gray-1">{ } Beds</div>
                 </li>
               </ul>
-            </div>
+            </div> */}
             <Reviews id={id} />
           </div>
 

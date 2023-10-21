@@ -51,6 +51,7 @@ function Booking() {
           showConfirmButton: false,
           timer: 2500,
         });
+        navigate('/home');
       })
       .catch((error) => {
         console.error("Booking failed.", error);
