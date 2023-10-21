@@ -93,6 +93,11 @@
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header d-flex justify-content-between m-2">
 
@@ -119,8 +124,8 @@
                                         @foreach ($adminCategories as $category)
                                             <tr>
                                                 <td>
-                                                    <img src="../image/{{ $category->image }}" alt="{{ $category->name }}"
-                                                        width="60px" height="60px">
+                                                    <img src=" {{ asset('photo' . $category->image) }}"
+                                                        alt="{{ $category->name }}" width="60px" height="60px">
                                                 </td>
 
                                                 <td>{{ $category->name }}</td>

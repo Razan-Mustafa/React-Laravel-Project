@@ -37,7 +37,25 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
 
+
+        $request->validate([
+            'name' => 'required|max:80',
+            'package_id' => 'required|exists:packages,id',
+        ]);
+
         $adminProducts = Product::create($request->all());
+        $relativeImagePath = null;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $relativeImagePath = '/' . $newImageName;
+        }
+
+
+        $adminProducts->image = $relativeImagePath;
+
         $productId = $adminProducts->id;
         $adminProducts->save();
 
@@ -54,7 +72,22 @@ class AdminProductController extends Controller
 
     public function update(Request $request, Product $adminProduct)
     {
+
+        $request->validate([
+            'name' => 'required|max:80',
+            'package_id' => 'required|exists:packages,id',
+        ]);
+
         $adminProduct->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $adminProduct->image = '/' . $newImageName;
+        }
+
+        $adminProduct->update($request->except('image'));
 
         return redirect()->route('admin_product.index')->with('success', 'Product updated successfully.');
     }

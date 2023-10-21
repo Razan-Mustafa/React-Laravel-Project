@@ -14,10 +14,16 @@ function SingleProduct() {
   const [details, setDetails] = useState([]);
   const [selectedDays, setSelectedDays] = useState(1);
   const [updatedPrice, setUpdatedPrice] = useState(0);
+  const user_id = localStorage.getItem("user_id");
   const navigate = useNavigate();
   const { id } = useParams();
   console.log('my test');
-console.log(id);
+  console.log(id);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const getProductDetails = () => {
       axios
@@ -60,36 +66,39 @@ console.log(id);
     const selectedDate = document.getElementById("startDate").value;
     // const packageName = details.name;
     const url = `/booking/${numberOfDays}/${selectedDate}/${price}/${details.name}/${details.image.slice(1)}/${details.id}`;
-
-    navigate(url);
+    if (user_id == null) {
+      navigate('/login')
+    } else {
+      navigate(url);
+    }
   };
 
   return (
     <main id="content">
-             <div style={{ textAlign: 'center', marginTop: '80px' }}>
-      <img
-        src={productImage}
-        alt="Product Image"
-        style={{ width: '100%', height: '300px', objectFit: 'cover' }}
-      />
-    </div>
-    
+      <div style={{ textAlign: 'center', marginTop: '80px' }}>
+        <img
+          src={productImage}
+          alt="Product Image"
+          style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+        />
+      </div>
+
       <br />
       <br />
       <br />
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-xl-9">
-            <Details id = {id}/>
-            <div class="py-4 border-top border-bottom mb-4">
+            <Details id={id} />
+            {/* <div class="py-4 border-top border-bottom mb-4">
               <ul class="list-group list-group-borderless list-group-horizontal flex-center-between text-center mx-md-4 flex-wrap">
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-ruler text-primary font-size-40 mb-1 d-block"></i>
-                  <div class="text-gray-1">{} M</div>
+                  <div class="text-gray-1">{ } M</div>
                 </li>
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-download-speed text-primary font-size-40 mb-1 d-block"></i>
-                  <div class="text-gray-1">{} KMPH </div>
+                  <div class="text-gray-1">{ } KMPH </div>
                 </li>
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-user-2 text-primary font-size-40 mb-1 d-block"></i>
@@ -99,11 +108,11 @@ console.log(id);
                 </li>
                 <li class="list-group-item text-lh-sm ">
                   <i class="flaticon-bed-1 text-primary font-size-40 mb-1 d-block"></i>
-                  <div class="text-gray-1">{} Beds</div>
+                  <div class="text-gray-1">{ } Beds</div>
                 </li>
               </ul>
-            </div>
-            <Reviews id = {id}/>
+            </div> */}
+            <Reviews id={id} />
           </div>
 
           <div class="col-lg-4 col-xl-3">
@@ -130,39 +139,39 @@ console.log(id);
 
                   <br />
                   <form onSubmit={handleNavigate}>
-                  <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">
-                    Starting Date
-                  </h6>
-                  <div className="mb-4">
-                    <div className="border-bottom border-width-2 border-color-1">
-                      <div className="input-group">
-                        <div className="input-group-prepend">
-                          <span className="input-group-text">
-                            <i className="flaticon-calendar text-primary font-weight-semi-bold"></i>
-                          </span>
+                    <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">
+                      Starting Date
+                    </h6>
+                    <div className="mb-4">
+                      <div className="border-bottom border-width-2 border-color-1">
+                        <div className="input-group">
+                          <div className="input-group-prepend">
+                            <span className="input-group-text">
+                              <i className="flaticon-calendar text-primary font-weight-semi-bold"></i>
+                            </span>
+                          </div>
+                          <input
+                            type="date"
+                            className="form-control"
+                            id="startDate"
+                            name="startDate"
+                            min={minDate}
+                            required
+                          />
                         </div>
-                        <input
-                          type="date"
-                          className="form-control"
-                          id="startDate"
-                          name="startDate"
-                          min={minDate}
-                          required
-                        />
                       </div>
                     </div>
-                  </div>
-                  <h4>
-                    Total Price: {Math.floor(updatedPrice)} <br />
-                  </h4>
-                  <div class="text-center">
-                    <button
-                      type="submit"
-                      class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
-                    >
-                      Book Now
-                    </button>
-                  </div>
+                    <h4>
+                      Total Price: {Math.floor(updatedPrice)} <br />
+                    </h4>
+                    <div class="text-center">
+                      <button
+                        type="submit"
+                        class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
+                      >
+                        Book Now
+                      </button>
+                    </div>
                   </form>
 
                 </div>

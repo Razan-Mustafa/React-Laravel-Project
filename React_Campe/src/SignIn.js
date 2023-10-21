@@ -7,7 +7,7 @@ function SignIn() {
     const [loginUrl, setLoginUrl] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:80/api/auth', {
+        fetch('http://localhost:8000/api/auth', {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -24,11 +24,14 @@ function SignIn() {
             .catch((error) => console.error(error));
     }, []);
 
+
+
+
     return (
-        <div>
-            {loginUrl != null && (
+        <div style={{ height:'100px', margin: "100px", width: "250px" }}>
+            {/* {loginUrl != null && ( */}
                 <a href={loginUrl}>Google Sign In</a>
-            )}
+            {/* )} */}
         </div>
     );
 }

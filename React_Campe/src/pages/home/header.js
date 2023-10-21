@@ -19,8 +19,8 @@ export default function Header() {
         alt="..."
         style={itemStyle}
       >
-        <h2>Second slide label</h2>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+        <h2>Outdoor, friends, camping, memories</h2>
+        <h5>Camping: Nature's embrace, starlit skies, crackling fires, serenity found, a world disconnected, memories made, adventure in simplicity.</h5>
       </MDBCarouselItem>
 
       <MDBCarouselItem
@@ -30,8 +30,8 @@ export default function Header() {
         alt="..."
         style={itemStyle}
       >
-        <h2>Second slide label</h2>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+        <h2>Campfire, stars, wilderness, serenity.</h2>
+        <h5>Camping: Escape to wild beauty, under canvas, the great outdoors, tales by firelight, where tranquility meets adventure.</h5>
       </MDBCarouselItem>
 
       <MDBCarouselItem
@@ -41,8 +41,8 @@ export default function Header() {
         alt="..."
         style={itemStyle}
       >
-        <h2>Second slide label</h2>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+        <h2>Nature, adventure, peace, relaxation.</h2>
+        <h5>Camping: Rustic retreat, natural wonders, peaceful nights, outdoor harmony, soulful solitude, adventure's doorstep, fireside stories, unforgettable moments.</h5>
       </MDBCarouselItem>
     </MDBCarousel>
   );

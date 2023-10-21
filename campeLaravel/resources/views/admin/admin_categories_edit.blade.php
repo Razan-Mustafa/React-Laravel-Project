@@ -18,32 +18,51 @@
                             <div class="card-body">
                                 <form
                                     action="{{ route('admin_categories.update', ['admin_category' => $adminCategory->id]) }}"
-                                    method="POST">
+                                    method="POST" enctype="multipart/form-data">
 
                                     @csrf
                                     @method('PUT')
 
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ $adminCategory->name }}">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="name" name="name" value="{{ $adminCategory->name }}" required>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Image URL</label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                            value="{{ $adminCategory->image }}">
+                                        <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                            id="image" name="image" value="{{ $adminCategory->image }}" required>
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
+
                                     <div class="form-group">
                                         <label for="image">Current Image</label>
-                                        <img src="{{ asset('image/' . $adminCategory->image) }}"
-                                            alt="{{ $adminCategory->name }}" width="70px" height="60px">
+                                        <img src="{{ asset('photo/' . $adminCategory->image) }}"
+                                            alt="{{ $adminCategory->name }}" width="70px" height="60px" >
                                     </div>
 
                                     <div class="form-group">
                                         <label for="description">Category Description</label>
-                                        <textarea name="description" id="description" class="form-control">{{ $adminCategory->description }}</textarea>
+                                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" required>{{ $adminCategory->description }}</textarea>
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
+
+
+
                                     <button type="submit" class="btn btn-primary">Update Category</button>
                                 </form>
                             </div>
