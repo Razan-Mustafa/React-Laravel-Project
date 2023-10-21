@@ -16,9 +16,11 @@ import Footer from "./pages/home/footer";
 import "bootstrap/dist/js/bootstrap"; 
 import Contact from "./pages/contact";
 import MaybeShowNavbar from "./MaybeShowNavbar"
+
+ import { useLocation } from "react-router-dom";
+
 import SignIn from "./SignIn";
 import GoogleCallback from "./GoogleCallback";
-import { useLocation } from "react-router-dom";
 
 function App() {
 

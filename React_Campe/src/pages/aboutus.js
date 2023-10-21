@@ -1,70 +1,9 @@
 import React from 'react'
-// import img3 from "./boat1.jpg";
-// import img4 from "./boat1.jpg";
-// import img5 from "./boat2.jpg";
-// import img6 from "./boat3.jpg";
-// import img7 from "./boat4.jpg";
-// import shatha from "./shatha.jpg";
-// import sereen from "./sereen.jpg";
-// import rama from "./rama.jpg";
-// import noor from "./noor.jpg";
-// import yousef from "./mawlana.jpg";
-// import ahmad from "./noor.jpg";
+ 
 import CounterComponent from "./home/counter";
 
 export default function Aboutus() {
-
-  // const myStyle = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagslider1 = {
-  //   backgroundImage: `url(${img4})`,
-  // };
-  // const imagslider2 = {
-  //   backgroundImage: `url(${img5})`,
-  // };
-  // const imagslider3 = {
-  //   backgroundImage: `url(${img6})`,
-  // };
-  // const imagslider4 = {
-  //   backgroundImage: `url(${img7})`,
-  // };
-  // const imagslider5 = {
-  //   backgroundImage: `url(${img6})`,
-  // };
-  // const imagefluid1 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid2 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid3 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid4 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid5 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid6 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid7 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid8 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid9 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid10 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
-  // const imagefluid11 = {
-  //   backgroundImage: `url(${img3})`,
-  // };
+ 
   return (
     <div>
       {/* <!-- ========== MAIN CONTENT ========== --> */}
@@ -104,81 +43,7 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-        {/* <div className="slider border-bottom border-color-3">
-          <div className="container space-1">
-            <div className="w-md-80 w-lg-70 text-center mx-md-auto mb-5 mt-3">
-              <h2 className="section-title text-black font-size-xs-28 font-weight-bold mb-0">
-                We’re truely dedicated to make your travel experience as much
-                simple and fun as possible!
-              </h2>
-            </div>
-            <section className="w-lg-80 mx-auto mb-4">
-              <div className="row">
-                <div className="col-md-6">
-                  <h2 className="font-size-21 font-weight-bold text-center text-md-left ">
-                    Our Story
-                  </h2>
-                  <p className="text-gray-1">
-                    Bringing you a modern, comfortable, and connected travel
-                    experience is one of our highest priorities and that’s why
-                    we continuously try to improve your experience when you book
-                    anything with us.
-                  </p>
-                </div>
-
-                <div className="col-md-6">
-                  <h2 className="font-size-21 font-weight-bold text-center text-md-left ">
-                    Our mission
-                  </h2>
-                  <p className="text-gray-1">
-                    We really appreciate and welcome any of suggstions you might
-                    have for us, so feel free drop us line anytime.Air
-                    conditioning, heating, desk, alarm clock, iPod docking
-                    station can be found in selected guestrooms.
-                  </p>
-                </div>
-              </div>
-            </section>
-            <div
-              className="js-slick-carousel u-slick pb-2"
-              data-arrows-classNamees="d-none d-lg-inline-block u-slick__arrow-classNameic u-slick__arrow-centered--y rounded-circle"
-              data-arrow-left-classNamees="flaticon-back u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--left ml-lg-2 ml-xl-9"
-              data-arrow-right-classNamees="flaticon-next u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--right mr-lg-2 mr-xl-9"
-              data-pagi-classNamees="text-center u-slick__pagination mt-5"
-            >
-              <div
-                className="js-slide bg-img-hero-center rounded-xs"
-                style={imagslider1}
-              >
-                <div className="space-5"></div>
-              </div>
-              <div
-                className="js-slide bg-img-hero-center rounded-xs"
-                style={imagslider2}
-              >
-                <div className="space-5"></div>
-              </div>
-              <div
-                className="js-slide bg-img-hero-center rounded-xs"
-                style={imagslider3}
-              >
-                <div className="space-5"></div>
-              </div>
-              <div
-                className="js-slide bg-img-hero-center rounded-xs"
-                style={imagslider4}
-              >
-                <div className="space-5"></div>
-              </div>
-              <div
-                className="js-slide bg-img-hero-center rounded-xs"
-                style={imagslider5}
-              >
-                <div className="space-5"></div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+         
         {/* <!-- End Slider --> */}
         {/* <!-- Features Section --> */}
         <div className="container text-center space-1">
