@@ -14,6 +14,8 @@
             <div class="section-header">
                 <h1>Dashboard</h1>
             </div>
+
+
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
@@ -93,6 +95,11 @@
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header d-flex justify-content-between m-2">
 
@@ -121,8 +128,8 @@
                                             <tr>
 
                                                 <td>
-                                                    <img src="{{ asset('photo'.$admins->image )}}" alt="{{ $admins->name }}"
-                                                        width="60px" height="60px">
+                                                    <img src="{{ asset('photo' . $admins->image) }}"
+                                                        alt="{{ $admins->name }}" width="60px" height="60px">
                                                 </td>
 
                                                 <td>{{ $admins->name }}</td>

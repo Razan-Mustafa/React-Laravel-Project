@@ -34,11 +34,25 @@ class AdminCategoryController extends Controller
 
     public function store(Request $request)
     {
-        // Create a new category with the form data
-        $adminCategories = new Category();
-        $adminCategories->name = $request->input('name');
-        $adminCategories->image = $request->input('image');
-        $adminCategories->description = $request->input('description');
+        $request->validate([
+            'name' => 'required|max:80',
+
+            'description' => 'nullable|string|max:250', // Make the description field optional and limit its length.
+        ]);
+
+        $adminCategories = new Category($request->all());
+
+        $relativeImagePath = null;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $relativeImagePath = '/' . $newImageName;
+        }
+
+        // Create a new Admin record and set the 'image' field to the path
+        $adminCategories->image = $relativeImagePath;
         $adminCategories->save();
 
         $categoryId = $adminCategories->id;
@@ -54,13 +68,22 @@ class AdminCategoryController extends Controller
 
     public function update(Request $request, Category $adminCategory)
     {
-        // $adminCategory->update($request->all());
 
-        $adminCategory->update([
-            'name' => $request->input('name'),
-            'image' => $request->input('image'),
-            'description' => $request->input('description'),
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable|string|max:250',
         ]);
+
+        $adminCategory->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $newImageName = uniqid() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('photo'), $newImageName);
+            $adminCategory->image = '/' . $newImageName;
+        }
+
+        $adminCategory->update($request->except('image'));
 
         return redirect(route('admin_categories.index'))->with('success', 'Category updated successfully.');
     }

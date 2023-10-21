@@ -27,15 +27,26 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/admin_home');
+
+
+
+
+
+Route::middleware(['admin'])->group(function () {
+    Route::resource('/', AdminHomeController::class);
+    Route::resource('admin/admin_categories', AdminCategoryController::class);
+    Route::resource('admin/admin_package', AdminPackageController::class);
+    Route::resource('admin/admin_product', AdminProductController::class);
+    Route::resource('admin/admin_user', AdminUserController::class);
+    Route::resource('admin/admin_booking', AdminBookingController::class);
+    Route::resource('admin/admin_admin', AdminController::class);
 });
 
-Route::resource('/', AdminHomeController::class);
-Route::resource('admin/admin_categories', AdminCategoryController::class);
-Route::resource('admin/admin_package', AdminPackageController::class);
-Route::resource('admin/admin_product', AdminProductController::class);
-Route::resource('admin/admin_user', AdminUserController::class);
-Route::resource('admin/admin_booking', AdminBookingController::class);
-Route::resource('admin/admin_admin', AdminController::class);
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', [AdminController::class, 'login'])->name('auth.login');
+
+Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 

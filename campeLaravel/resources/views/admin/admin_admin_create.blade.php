@@ -1,7 +1,5 @@
 @extends('layout.admin_master')
 
-
-
 @section('title', 'Create Category')
 
 @section('content')
@@ -20,26 +18,49 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="name">Category Name</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="image">Image URL</label>
-                                        <input type="file"name="image" id="image" class="form-control">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="email">email</label>
-                                        <input type="email" name="email" id="email" class="form-control" required>
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name"
+                                            class="form-control @error('name') is-invalid @enderror" required>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password">password</label>
-                                        <input type="password" name="password" id="password" class="form-control" required>
+                                        <label for="image">Image</label>
+                                        <input type="file" name="image" id="image"
+                                            class="form-control @error('image') is-invalid @enderror" required>
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email"
+                                            class="form-control @error('email') is-invalid @enderror" required>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password"
+                                            class="form-control @error('password') is-invalid @enderror" required>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary">Create admin</button>
                                 </form>
                             </div>
@@ -49,4 +70,5 @@
             </div>
         </section>
     </div>
+
 @endsection
