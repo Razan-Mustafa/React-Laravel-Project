@@ -85,7 +85,7 @@ function Reviews({
 
   function calculateAverageRate(reviews) {
     if (reviews.length === 0) {
-      return 0; 
+      return 0;
     }
 
     const totalRate = reviews.reduce(
@@ -109,119 +109,164 @@ function Reviews({
                     <h4>Review</h4>
 
                     {reviews && reviews.length > 0 ? (
-                      reviews.slice(0, showAllComments ? reviews.length : 2).map((review) => (
-                        <div
-                          className="sigma_testimonial style-14"
-                          key={review.id}
-                        >
+                      reviews
+                        .slice(0, showAllComments ? reviews.length : 2)
+                        .map((review) => (
                           <div
-                            className="sigma_testimonial-thumb"
-                            key={review.id}
-                          ></div>
-                          <div
-                            className="sigma_testimonial-body"
+                            className="sigma_testimonial style-14"
                             key={review.id}
                           >
-                            <div className="d-flex align-items-center justify-content-between">
-                              <div className="d-block d-sm-flex align-items-center">
-                                <div className="sigma_author-block">
-                                <h5>{review.user && review.user.name}</h5>
+                            <div
+                              className="sigma_testimonial-thumb"
+                              key={review.id}
+                            ></div>
+                            <div
+                              className="sigma_testimonial-body"
+                              key={review.id}
+                            >
+                              <div className="d-flex align-items-center justify-content-between">
+                                <div className="d-block d-sm-flex align-items-center">
+                                  <div className="sigma_author-block">
+                                    <div className="sigma_testimonial-thumb">
+                                      {review.user && review.user.image ? (
+                                        <img
+                                          src={
+                                            "http://127.0.0.1:8000/photo/" +
+                                            review.user.image
+                                          }
+                                          alt={review.user.name}
+                                          style={{
+                                            width: "50px",
+                                            height: "50px",
+                                            borderRadius: "50%",
+                                            marginBottom: "0px",
+                                          }}
+                                        />
+                                      ) : (
+                                        <img
+                                          src={
+                                            "http://127.0.0.1:8000/photo/user.png"
+                                          }
+                                          style={{
+                                            width: "50px",
+                                            height: "50px",
+                                            borderRadius: "50%",
+                                            marginBottom: "0px",
+                                          }}
+                                        />
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className="sigma_testimonial-body">
+                                    <div className="d-flex align-items-center justify-content-between">
+                                      <div className="d-block d-sm-flex align-items-center">
+                                        <div className="sigma_author-block">
+                                          <h5>
+                                            {review.user && review.user.name}
+                                          </h5>
+                                        </div>
+
+                                        <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
+                                          {Rating(review.rate)}
+                                          <span className="ml-3">
+                                            ({review.rate}/5)
+                                          </span>
+                                        </div>
+                                        <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
+                                          <span className="sigma_testimonial-date">
+                                            {review.date}
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
-                                  {Rating(review.rate)}
-                                  <span className="ml-3">
-                                    ({review.rate}/5)
-                                  </span>
-                                </div>
+
+                                {/* start */}
+                                {IsLoggedIn && review.user_id === 1 && (
+                                  <div style={{ textAlign: "right" }}>
+                                    <button
+                                      onClick={() =>
+                                        confirmDeleteReview(review.id)
+                                      }
+                                      style={{
+                                        background: "none",
+                                        padding: "0",
+                                        border: "none",
+                                      }}
+                                    >
+                                      <i
+                                        className="fas fa-trash-alt"
+                                        style={{ color: "#637E4C" }}
+                                      ></i>
+                                    </button>
+                                    <button
+                                      onClick={() =>
+                                        toggleEditReview(
+                                          review.id,
+                                          review.comment,
+                                          review.rate
+                                        )
+                                      }
+                                      style={{
+                                        background: "none",
+                                        padding: "0",
+                                        border: "none",
+                                      }}
+                                    >
+                                      <i
+                                        className="fas fa-edit"
+                                        style={{ color: "#637E4C" }}
+                                      ></i>
+                                    </button>
+                                  </div>
+                                )}
+                                {/* end */}
                               </div>
 
-                              {/* start */}
-                              {IsLoggedIn && review.user_id === 1 && (
-                                <div style={{ textAlign: "right" }}>
-                                  <button
-                                    onClick={() =>
-                                      confirmDeleteReview(review.id)
+                              {editingReviewId === review.id ? (
+                                <div>
+                                  <label>Rating:</label>
+                                  <select
+                                    name="rateupdate"
+                                    value={reviewText.rateupdate}
+                                    onChange={(e) =>
+                                      handleInputChange(e, "rateupdate")
                                     }
+                                  >
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
+                                  </select>
+                                  <textarea
+                                    rows="4"
+                                    name="commentupdate"
+                                    value={reviewText.commentupdate}
+                                    onChange={(e) =>
+                                      handleInputChange(e, "commentupdate")
+                                    }
+                                    required
+                                  ></textarea>
+                                  <button
+                                    onClick={() => saveEditedReview(review.id)}
                                     style={{
-                                      background: "none",
-                                      padding: "0",
-                                      border: "none",
+                                      borderRadius: "5px",
+                                      padding: "7px",
+                                      marginTop: "5px",
                                     }}
                                   >
-                                    <i
-                                      className="fas fa-trash-alt"
-                                      style={{ color: "#637E4C" }}
-                                    ></i>
-                                  </button>
-                                  <button
-                                    onClick={() =>
-                                      toggleEditReview(
-                                        review.id,
-                                        review.comment,
-                                        review.rate
-                                      )
-                                    }
-                                    style={{
-                                      background: "none",
-                                      padding: "0",
-                                      border: "none",
-
-                                    }}
-                                  >
-                                    <i
-                                      className="fas fa-edit"
-                                      style={{ color: "#637E4C" }}
-                                    ></i>
+                                    Save
                                   </button>
                                 </div>
+                              ) : (
+                                <p>"{review.comment}"</p>
                               )}
-                              {/* end */}
                             </div>
-                            <span className="sigma_testimonial-date">
-                              {review.date}
-                            </span>
-                            {editingReviewId === review.id ? (
-                              <div>
-                                <label>Rating:</label>
-                                <select
-                                  name="rateupdate"
-                                  value={reviewText.rateupdate}
-                                  onChange={(e) =>
-                                    handleInputChange(e, "rateupdate")
-                                  }
-                                >
-                                  <option value={1}>1</option>
-                                  <option value={2}>2</option>
-                                  <option value={3}>3</option>
-                                  <option value={4}>4</option>
-                                  <option value={5}>5</option>
-                                </select>
-                                <textarea
-                                  rows="4"
-                                  name="commentupdate"
-                                  value={reviewText.commentupdate}
-                                  onChange={(e) =>
-                                    handleInputChange(e, "commentupdate")
-                                  }
-                                  required
-                                ></textarea>
-                                <button
-                                  onClick={() => saveEditedReview(review.id)}
-                                  style={{
-                                    borderRadius: "5px",
-                                    padding: "7px",
-                                    marginTop: "5px",
-                                  }}
-                                >
-                                  Save
-                                </button>
-                              </div>
-                            ) : (
-                              <p>"{review.comment}"</p>
-                            )}
                           </div>
-                        </div>
-                      ))
+                        ))
                     ) : (
                       <p>No reviews available</p>
                     )}
@@ -343,7 +388,6 @@ function Reviews({
                           type="button"
                           className="sigma_btn"
                           class="btn btn-primary align-items-center font-weight-bold"
-
                           onClick={() => setShowAllComments(true)}
                           style={{
                             borderRadius: "5px",
@@ -362,7 +406,6 @@ function Reviews({
                           type="button"
                           className="sigma_btn"
                           class="btn btn-primary align-items-center font-weight-bold"
-
                           onClick={() => setShowAllComments(false)}
                           style={{
                             borderRadius: "5px",
@@ -427,15 +470,16 @@ function Reviews({
                         ></textarea>
                       </div>
                       <div style={{ textAlign: "right" }}>
-                        <button                     
+                        <button
                           class="btn btn-primary align-items-center font-weight-bold"
-
-                         type="submit"
+                          type="submit"
                           style={{
                             borderRadius: "5px",
                             padding: "10px",
                             marginTop: "5px",
-                          }}>Submit Review
+                          }}
+                        >
+                          Submit Review
                         </button>
                       </div>
                     </form>
