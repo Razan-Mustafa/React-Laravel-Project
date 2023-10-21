@@ -501,6 +501,8 @@ const mapStateToProps = (state) => {
   };
 };
 
+ 
+
 // Map Redux actions to component props
 const mapDispatchToProps = {
   fetchReviews,

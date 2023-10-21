@@ -50,6 +50,12 @@ Route::post('edit_profile/{id}', [UserController::class, 'EditProfile']);
 Route::put('eng/{id}', [UserController::class, 'updatePassword']);
 
 
+// Route::get('auth', [AuthController::class, 'redirectToAuth']);
+// Route::get('auth/callback', [AuthController::class, 'handleAuthCallback']);
+
+
+ 
+
 Route::get('auth', [AuthController::class, 'redirectToAuth']);
 Route::get('auth/callback', [AuthController::class, 'handleAuthCallback']);
 
