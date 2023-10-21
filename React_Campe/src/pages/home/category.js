@@ -18,7 +18,10 @@ function Category() {
   }, []);
 
   return (
-    <div id="category" className="destination-block destination-v5 border-bottom border-color-8">
+    <div
+      id="category"
+      className="destination-block destination-v5 border-bottom border-color-8"
+    >
       <div className="container space-1">
         <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mt-3">
           <h2 className="section-title text-black font-size-30 font-weight-bold mb-0">
@@ -42,12 +45,21 @@ function Category() {
                 <header className="w-100 d-flex justify-content-between mb-3">
                   <div>
                     <div className="pb-3 text-lh-1">
-                      <a
-                        className="text-white font-weight-bold font-size-21"
+                      <a className="text-white font-weight-bold font-size-20"
                         onClick={() => handleButtonClick(category.id)}
                       >
                         {category.name}
                       </a>
+                    </div>
+
+                    <div className="d-inline-flex px-3 py-1 rounded-pill bg-white">
+                      <h6
+                        className="font-size-15"
+                        style={{ border: "none", backgroundColor: "white" }}
+                        onClick={() => handleButtonClick(category.id)}
+                      >
+                        {[category.packages.length]} packages
+                      </h6>
                     </div>
                     <div className="pb-3 text-lh-1">
                       <p
@@ -56,15 +68,6 @@ function Category() {
                       >
                         {category.description}
                       </p>
-                    </div>
-                    <div className="d-inline-flex px-3 py-1 rounded-pill bg-white">
-                      <button
-                        className="font-size-15"
-                        style={{ border: "none", backgroundColor: "white" }}
-                        onClick={() => handleButtonClick(category.id)}
-                      >
-                        {[category.packages.length]} packages
-                      </button>
                     </div>
                   </div>
                 </header>

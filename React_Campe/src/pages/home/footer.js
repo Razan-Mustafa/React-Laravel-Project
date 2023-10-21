@@ -116,7 +116,7 @@ function Footer() {
                     </h4>
                     <address class="pr-4">
                       <span class="mb-5 h6 font-weight-normal text-gray-1">
-                        Amman Jordan.
+                        Ajloun Jordan.
                       </span>
                     </address>
 

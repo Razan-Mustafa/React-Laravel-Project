@@ -58,17 +58,11 @@ function Home() {
                       <img
                         src={packages.image}
                         alt="Image"
-                        style={{ maxWidth: "100%", height: "auto" }}
+                        style={{ maxWidth: "100%", height: "250px" }}
                         onClick={() => handleButtonClick(packages.id)}
                       />
 
-                      {/* <img
-                        src={
-                          "http://127.0.0.1:8000/api" + packages.image
-                        }
-                        alt="Image"
-                        style={{ maxWidth: "100%", height: "auto" }}
-                      /> */}
+                    
 
                       <h6 className="font-size-17 text-gray-3 font-weight-bold">
                         {packages.name}
