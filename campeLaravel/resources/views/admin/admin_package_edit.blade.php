@@ -77,7 +77,7 @@
                                     <div class="form-group">
                                         <label for="image">Image URL</label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                            id="image" name="image" required>
+                                            id="image" name="image"  required>
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
