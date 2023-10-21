@@ -7,12 +7,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Home() {
-  const [packages, setPackages] = useState([]);
 
-  const navigate = useNavigate();
-  const handleButtonClick = () => {
-    navigate(`/blog`);
-  };
+
+ const navigate = useNavigate();
+ const [packages, setPackages] = useState([]);
+ const handleButtonClick = (id) => {
+   navigate(`/package/${id}`);
+ };
+
+
+  
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -54,6 +59,7 @@ function Home() {
                         src={packages.image}
                         alt="Image"
                         style={{ maxWidth: "100%", height: "auto" }}
+                        onClick={() => handleButtonClick(packages.id)}
                       />
 
                       {/* <img
@@ -79,7 +85,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="recent-article-block recent-article-v1">
+      {/* <div className="recent-article-block recent-article-v1">
         <div className="container space-1 mt-3 mb-lg-4">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5">
             <h2 className="section-title text-black font-size-30 font-weight-bold mb-0">
@@ -150,7 +156,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

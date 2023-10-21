@@ -253,11 +253,7 @@ body {
   font-weight: 400;
 }
 
-.sigma_box {
-  padding: 30px;
-  background-color: #fff;
-  box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.03);
-}
+ 
 
 .gallery-thumb {
   position: relative;

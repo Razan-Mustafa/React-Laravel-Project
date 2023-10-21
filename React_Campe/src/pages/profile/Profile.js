@@ -115,43 +115,121 @@ useEffect(() => {
 //     }
 // };
 
-const SaveInfo = async () => {
+
+const handleProfileUpdate = async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("name", userData.name);
+  formData.append("phone", userData.phone);
+  formData.append("email", userData.email);
+  formData.append("address", userData.address);
+
   if (imageInput.current && imageInput.current.files.length > 0) {
-    const formData = new FormData();
-    formData.append("name", userData.name);
-    formData.append("phone", userData.phone);
-    formData.append("email", userData.email);
-    formData.append("address", userData.address);
     formData.append("image", imageInput.current.files[0]);
-
-    try {
-      const response = await axios.post(
-        `http://127.0.0.1:8000/api/edit_profile/` + id,
-        formData
-      );
-
-      if (response.status === 200) {
-        alert("Data Updated Successfully");
-      } else {
-        alert("There is something wrong");
-      }
-    } catch (error) {
-      console.error("Error updating data:", error);
-    }
-  } else {
-    // Handle the case where no file is selected or imageInput is null.
-    // You can show an error message or take appropriate action.
   }
-};
 
+  try {
+    const response = await axios.post(
+      `http://127.0.0.1:8000/api/edit_profile/${id}`,
+      formData
+    );
+
+    if (response.status === 200) {
+      // Assuming your response contains the URL of the updated image
+      const newImageUrl = response.data.imageUrl;
+    
+      // Update the image source
+      const profileImage = document.getElementById("profileImage");
+      if (profileImage) {
+        profileImage.src = newImageUrl;
+      }
+    
+      Swal.fire({
+        title: 'Success',
+        text: 'Data Updated Successfully',
+        icon: 'success',
+      });
+    }
+    
+  } catch (error) {
+    Swal.fire({
+      title: 'Error',
+      text: 'Error updating data',
+      icon: 'error',
+    });
+    console.error("Error updating data:", error);
+  }
+
+}
+
+
+  const [passwordData, setPasswordData] = useState({
+    password: '',
+    newPassword: '',
+  });
+
+  const handlePasswordUpdate = async (e) => {
+    e.preventDefault();
+  
+    const requestData = {
+      current_password: passwordData.currentPassword,
+      new_password: passwordData.newPassword,
+    };
+  
+    try {
+      const response = await axios.put(`http://127.0.0.1:8000/api/eng/${id}`, requestData);
+  
+      if (response.status === 200) {
+  
+        Swal.fire({
+          title: 'Success',
+          text: 'Password updated successfully',
+          icon: 'success',
+        });
+        setPasswordData({
+          currentPassword: '',
+          newPassword: '',
+        });
+      } 
+    } catch (error) {
+      console.error('Error updating password:', error);
+      if (error.response.status === 400) {
+        Swal.fire({
+          title: 'Validation Error',
+          html: error.response.data.errors.join('<br>'), 
+          icon: 'error',
+        });
+      } else {
+
+        Swal.fire({
+          title: 'Error',
+          text: 'An error occurred while updating the password',
+          icon: 'error',
+        });
+      }
+    }
+  };
+  
+
+  
+  
+  
+
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    SaveInfo();
-  }, []);
-
-
-// console.log(userData.image)
   
+    axios.get(`http://127.0.0.1:8000/api/book/${id}`)
+      .then(response => {
+        setBookings(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [id]);
+
+
+
 
 
   return (
@@ -159,7 +237,7 @@ const SaveInfo = async () => {
     
 <div>
 
-<div className="container rounded bg-white  profile">
+<div className="container rounded bg-white  profile mt-17" >
 
         <div className="row">
             <div className="col-md-4 border-right mt-5 ">
@@ -178,7 +256,8 @@ Welcome {userData.name}</h1>
   height="170"
   className="rounded-circle mt-2"
 />
-
+{/* http://127.0.0.1:8000/api/bookings */}
+{/* http://127.0.0.1:8000/api/packages */}
 {/* <label
   className="font-weight-bold "
   style={{
@@ -213,7 +292,7 @@ Welcome {userData.name}</h1>
                         </div>
                         <h6 className="text-right">Edit Profile</h6>
                     </div>
-                    <form action="" onSubmit={SaveInfo}>
+                    <form onSubmit={handleProfileUpdate}>
                     <div className="row mt-2">
                         <div className="col-md-6"><input onChange={(e) =>
                             setUserData((prev) => ({
@@ -271,34 +350,55 @@ Welcome {userData.name}</h1>
                                 <div className="mt-5 text-right"><input id="input7Save" type="submit" className="btn btn-primary profile-button" value="Save" /></div> 
                           </form>
                           <div className="d-flex flex-row align-items-center back"><i className="fa fa-long-arrow-left mr-1 mb-1"></i>
-                            <h6>Change Password</h6>
+                            <h6 className='mr-4'>Change Password</h6>
                         </div>
-                          <div className="row mt-2">
-                          <div className="col-md-9">
-                            <input type='Password' placeholder='Current password'  className="form-control" /></div>
-                           
-                            </div>
-                            <div className="row mt-2">
-                          <div className="col-md-9">
-                            <input type='Password' placeholder='New password'  className="form-control" /></div>
-                           
-                            </div>
-                            <div className="row mt-2">
-                          <div className="col-md-9">
-                            <input type='Password' placeholder='Confirm password'  className="form-control" /></div>
-                           
-                            </div>
-                            <div className="mt-5 text-right"><input id="input7Save" type="submit" className="btn btn-primary profile-button" value="Save" /></div> 
-{/*                
-                    <div className="row mt-3">
-                        <div className="col-md-6"><input type="text" className="form-control" placeholder="address" value="D-113, right avenue block, CA,USA"/></div>
-                        <div className="col-md-6"><input type="text" className="form-control" value="USA" placeholder="Country"/></div>
-                    </div>
-                    <div className="row mt-3">
-                        <div className="col-md-6"><input type="text" className="form-control" placeholder="Bank Name" value="Bank of America"/></div>
-                        <div className="col-md-6"><input type="text" className="form-control" value="043958409584095" placeholder="Account Number"/></div>
-                    </div> */}
-                    {/* <div className="mt-5 text-right"><button className="btn btn-primary profile-button" type="button">Save Profile</button></div> */}
+                        <form onSubmit={handlePasswordUpdate}>
+                        <div className="row mt-1">
+                        <div className="col-md-12">
+                        {/* <label htmlFor="currentPassword" style={{ fontSize: 12 }}>Current Password</label> */}
+    <input
+      type="password"
+      id="currentPassword"
+      name="currentPassword" // Should be "currentPassword" to match the state
+      value={passwordData.currentPassword} // Bind it to the state
+      onChange={(e) =>
+        setPasswordData({
+          ...passwordData,
+          currentPassword: e.target.value,
+        })
+      }
+      required
+      className="form-control" 
+      placeholder='Current Password'
+    />
+  </div>
+  </div>
+  <div className="row mt-2">
+  <div className="col-md-12">
+    {/* <label htmlFor="newPassword">New Password</label> */}
+    <input
+      type="password"
+      id="newPassword"
+      name="newPassword"
+      value={passwordData.newPassword}
+      onChange={(e) =>
+        setPasswordData({
+          ...passwordData,
+          newPassword: e.target.value,
+        })
+      }
+      required
+      className="form-control" 
+      placeholder='New Password'
+    />
+  </div>
+  </div>
+  <div className="mt-5 text-right"><input id="input7Save" type="submit" className="btn btn-primary profile-button" value="Update Password" /></div> 
+
+</form>
+
+
+
                 </div>
             </div>
         </div>
@@ -326,35 +426,39 @@ Welcome {userData.name}</h1>
                 </label>
               </th>
               
-              <th scope="col">Order</th>
               <th scope="col">Name</th>
-              <th scope="col">Occupation</th>
-              <th scope="col">Contact</th>
-              <th scope="col">Education</th>
+              <th scope="col">Name of packages</th>
+              <th scope="col">Image</th>
+              <th scope="col">Date</th>
+              <th scope="col">price</th>
             </tr>
           </thead>
           <tbody>
-            <tr scope="row">
-              <th scope="row">
-                <label class="control control--checkbox">
-                  <input type="checkbox"/>
-                  <div class="control__indicator"></div>
-                </label>
-              </th>
-              <td>
-                1392
-              </td>
-              <td><a href="#">James Yates</a></td>
-              <td>
-                Web Designer
-            
-              </td>
-              <td>+63 983 0962 971</td>
-              <td>NY University</td>
-            </tr>
+   
+  {bookings.map((booking) => (
+    <tr key={booking.id}>
+      <td>
+        <label className="control control--checkbox">
+          <input type="checkbox" />
+          <div className="control__indicator"></div>
+        </label>
+      </td>
+      <td>{userData.name}</td>
+      <td>{booking.package && booking.package.name ? booking.package.name : 'N/A'}</td>
+      <td>
+        {booking.package && booking.package.image ? (
+          <img src={booking.package.image} alt={booking.package.name} />
+        ) : (
+          'N/A'
+        )}
+      </td>
+      <td>{booking.date ? booking.date : 'N/A'}</td>
+      <td>{booking.package && booking.package.price ? booking.package.price : 'N/A'}</td>
+    </tr>
+  ))}
+</tbody>
+
        
-            
-          </tbody>
         </table>
 
 
@@ -362,5 +466,5 @@ Welcome {userData.name}</h1>
 
 </div>
 
-    );
+  );
 }

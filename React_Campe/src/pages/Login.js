@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 const Login = () => {
   const navigate = useNavigate();
 
@@ -34,7 +34,13 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data.message);
+        // Handle error with SweetAlert
+        Swal.fire({
+          title: 'Error',
+          text: 'An error occurred while logging in. Please try again later.',
+          icon: 'error',
+        });
+        console.error('Login error:', error);
       });
   };
 
@@ -42,14 +48,15 @@ const Login = () => {
  
     return (
       <>
-<section className="h-100 gradient-form" style={{ backgroundColor: '#eee', overflowY: 'hidden' }}>
-      <div className="container py-2 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-xl-10">
-            <div className="card rounded-3 text-black">
-              <div className="row g-0">
+<section className=" gradient-form" style={{ backgroundColor: '#eee', overflowY: 'hidden',height: '100vh' }}>
+<div className="container py-2 h-100">
 
-              <div className="col-lg-6 mt-10" style={{ backgroundColor: 'rgba(238, 238, 238, 0.02)' }}>
+        <div className="row d-flex justify-content-center align-items-center h-100"  style={{ height: '90vh' }} >
+          <div className="col-xl-10" >
+            <div className="card rounded-3 text-black" >
+              <div className="row g-0"  style={{ height: '90vh' }}>
+
+              <div className="col-lg-6 mt-5" style={{ backgroundColor: 'rgba(238, 238, 238, 0.02)' }} >
 
                   <div className="card-body p-md-5 mx-md-4">
                     <div className="text-center">
@@ -131,9 +138,9 @@ const Login = () => {
                  
 <img src="https://i.pinimg.com/564x/7a/8f/d2/7a8fd229c2cff7b54f68c2b024f0e390.jpg" height="100%" width="100%" /> */}
                     
-<div className="col-lg-6 d-flex align-items-center" style={{height: '736px'}}>
+<div className="col-lg-6 " style={{height: '736px'}}>
                  
-                 <img src="https://i.pinimg.com/564x/61/d5/e8/61d5e805e7c3bb5a5453c374480a1884.jpg" height="100%" width="100%" />  
+                 <img src="https://i.pinimg.com/564x/61/d5/e8/61d5e805e7c3bb5a5453c374480a1884.jpg" height="91%" width="100%" className="mt-1"/>  
                 </div>
               </div>
             </div>
