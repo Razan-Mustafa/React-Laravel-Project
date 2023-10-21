@@ -250,7 +250,7 @@ const handleProfileUpdate = async (e) => {
 >
 Welcome {userData.name}</h1>
 <img
-  src={userData.image ? `http://127.0.0.1:8000/img/${userData.image}` : 'https://icones.pro/wp-content/uploads/2022/07/icones-d-administration-vert.png'}
+  src={userData.image ? `http://127.0.0.1:8000/photo/${userData.image}` : 'https://icones.pro/wp-content/uploads/2022/07/icones-d-administration-vert.png'}
   alt="Selected Image"
   width="170"
   height="170"
@@ -447,7 +447,9 @@ Welcome {userData.name}</h1>
       <td>{booking.package && booking.package.name ? booking.package.name : 'N/A'}</td>
       <td>
         {booking.package && booking.package.image ? (
-          <img src={booking.package.image} alt={booking.package.name} />
+           
+          <img src={`http://127.0.0.1:8000/photo/${booking.package.image}` }
+          alt={booking.package.name} />
         ) : (
           'N/A'
         )}
