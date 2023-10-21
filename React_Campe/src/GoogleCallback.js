@@ -33,7 +33,7 @@ function GoogleCallback() {
     // Helper method to fetch User data for authenticated user
     // Watch out for "Authorization" header that is added to this call
     function fetchUserData() {
-        fetch(`http://localhost:80/api/user`, {
+        fetch(`http://localhost:80/api/User`, {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
