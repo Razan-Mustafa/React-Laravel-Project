@@ -37,15 +37,16 @@ function Category() {
               <div
                 className="min-height-350 bg-img-hero rounded-border p-5 gradient-overlay-half-bg-gradient transition-3d-hover shadow-hover-2"
                 style={{
-                  backgroundImage: `url(${category.image})`,
+                  
+                  backgroundImage: `url(http://127.0.0.1:8000/photo/${category.image})`,
                 }}
-                // style={{ backgroundImage: category.image }}
-                onClick={() => handleButtonClick(category.id)}
+                 onClick={() => handleButtonClick(category.id)}
               >
                 <header className="w-100 d-flex justify-content-between mb-3">
                   <div>
                     <div className="pb-3 text-lh-1">
-                      <a className="text-white font-weight-bold font-size-20"
+                      <a
+                        className="text-white font-weight-bold font-size-20"
                         onClick={() => handleButtonClick(category.id)}
                       >
                         {category.name}

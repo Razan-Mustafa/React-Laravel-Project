@@ -12,11 +12,11 @@ ReactDOM.render(
   <Router>
     {" "}
     {/* Wrap your App with BrowserRouter */}
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <Provider store={Store}>
       <App />
       </Provider>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Router>,
   document.getElementById("root")
 );

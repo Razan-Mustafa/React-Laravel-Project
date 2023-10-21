@@ -272,7 +272,7 @@ function Packages() {
                                         <div
                                           className="js-slide bg-img-hero min-height-300 "
                                           style={{
-                                            backgroundImage: `url(${packages.image})`,
+                                            backgroundImage: `url(http://127.0.0.1:8000/photo/${packages.image})`,
                                             // width: "340px",
                                             // height: "280px",
                                             // backgroundSize: "100% 100%",

@@ -16,38 +16,58 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin_admin.update', ['admin_admin' => $admin_admin->id]) }} " method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin_admin.update', ['admin_admin' => $admin_admin->id]) }} "
+                                    method="POST" enctype="multipart/form-data">
 
                                     @csrf
                                     @method('PUT')
 
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ $admin_admin->name }}">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="name" name="name" value="{{ $admin_admin->name }}">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email">email</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            value="{{ $admin_admin->email }}">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="email" name="email" value="{{ $admin_admin->email }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password">password</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            value="{{ $admin_admin->password }}">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                            id="password" name="password" value="{{ $admin_admin->password }}">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Image URL</label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                            value="{{ $admin_admin->image }}">
+                                        <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                            id="image" name="image">
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="image">Current Image</label>
-                                        <img src="{{ asset('image/' . $admin_admin->image) }}" alt="{{ $admin_admin->name }}"
+                                        <img src="{{ asset('photo' . $admin_admin->image) }}" alt="{{ $admin_admin->name }}"
                                             width="70px" height="60px">
                                     </div>
 
