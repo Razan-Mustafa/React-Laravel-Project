@@ -25,13 +25,16 @@ function Packages() {
   const handleButtonClick = (id) => {
     navigate(`/category/${id}`);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/api/categories").then((response) => {
       setCategory(response.data);
     });
   }, []);
- 
+
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/packages`).then((response) => {
@@ -47,7 +50,7 @@ function Packages() {
         );
         console.log(selectedUsers);
       }
-    
+
       setData(filteredData);
       setResultCount(filteredData.length);
     });

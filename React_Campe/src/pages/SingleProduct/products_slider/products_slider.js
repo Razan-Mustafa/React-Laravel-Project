@@ -247,7 +247,7 @@ function ImageGallery({ package_id }) {
       <a className="prev1" onClick={() => plusSlides(-1)}>
         &#10094;
       </a>
-      <a className="next1" onClick={() => plusSlides(1)}>
+      <a className="next1" onClick={() => plusSlides(1)} style={{right:'10px'}}>
         &#10095;
       </a>
 
