@@ -3,35 +3,21 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
-
 function Booking() {
   const navigate = useNavigate();
-  const { days, date, price, packageName, packageImage, packageId } = useParams();
-  const user_id = 1
+  const { days, date, price, packageName, packageImage, packageId } =
+    useParams();
+  const user_id = 1;
   // const [userDetails, setUserDetails] = useState([]);
   const [bookingDetails, setBookingDetails] = useState({
-    name: '',
-    phone: '',
-    address: '',
+    name: "",
+    phone: "",
+    address: "",
   });
-  console.log('jordannnnnnnnnnnn');
   console.log(packageName, packageImage);
-  console.log(days,date,price);
+  console.log(days, date, price);
 
-  // useEffect(() => {
-  //   const getUserDetails = () => {
-  //     axios
-  //       .get(`http://127.0.0.1:8000/api/users/${user_id}`)
-  //       .then((response) => {
-  //         setUserDetails(response.data[0]);
-  //         console.log(response.data[0]);
-  //       })
-  //       .catch((error) => console.error(error));
-  //   };
 
-  //   getUserDetails();
-  // }, [user_id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,14 +33,15 @@ function Booking() {
       phone: bookingDetails.phone,
       address: bookingDetails.address,
       user_id: user_id,
-      package_id: packageId
+      package_id: packageId,
     };
-    console.log('wwwwwwwwwwwwwwwwwwwww');
+    console.log("wwwwwwwwwwwwwwwwwwwww");
     console.log(formData);
 
-    axios.post('http://127.0.0.1:8000/api/bookings', formData)
+    axios
+      .post("http://127.0.0.1:8000/api/bookings", formData)
       .then((response) => {
-        console.log('Booking successful!');
+        console.log("Booking successful!");
         console.log(response);
         Swal.fire({
           icon: "success",
@@ -64,22 +51,39 @@ function Booking() {
         });
       })
       .catch((error) => {
-        console.error('Booking failed.', error);
+        console.error("Booking failed.", error);
       });
   };
+
+
+
+
+// start date and period
+
+const startDate =new Date(date) ;
+const period = parseInt(days); 
+
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + period);
+
+const formattedEndDate = endDate.toISOString().split('T')[0];
+
+// console.log('Start Date:', startDate.toISOString().split('T')[0]);
+// console.log('End Date:', formattedEndDate);
+
   return (
     <>
-      <main id="content" class="bg-gray space-2" >
-        <div class="container" style={{marginTop: '100px'}}>
-          <div
-            className="row"
-            style={{ display: "flex", height: "780px" }}
-          >
-            <div class="col-lg-8 col-xl-9 " >
+      <main id="content" class="bg-gray space-2">
+        <div class="container" style={{ marginTop: "100px" }}>
+          <div className="row" style={{ display: "flex", height: "780px" }}>
+            <div class="col-lg-8 col-xl-9 ">
               <div class="mb-5 shadow-soft bg-white rounded-sm">
                 <div class="py-6 px-5 border-bottom">
                   <div class="flex-horizontal-center">
-                    <i class="fi fi-rr-info font-size-40" style={{ color: '#637E4C', marginTop: '8px' }}></i>
+                    <i
+                      class="fi fi-rr-info font-size-40"
+                      style={{ color: "#637E4C", marginTop: "8px" }}
+                    ></i>
                     <div class="ml-3">
                       <h3 class="font-size-18 font-weight-bold text-dark mb-0 text-lh-sm">
                         Your Information
@@ -92,42 +96,74 @@ function Booking() {
                 </div>
                 <div class="pt-4 pb-5 px-5 border-bottom">
                   <form onSubmit={handleSubmit}>
-                    <label>Name</label>
-                    <input name="name" type="text" value={bookingDetails.name} placeholder="Enter your name" onChange={handleInputChange} required></input>
+                    <div className="form-group">
+                      <label>Name</label>
+                      <input
+                        name="name"
+                        type="text"
+                        value={bookingDetails.name}
+                        placeholder="Enter your name"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <label>Phone Number</label>
-                    <input name="phone" type="number" value={bookingDetails.phone}
-                      placeholder="Enter your phone number" onChange={handleInputChange} required></input>
+                    <div className="form-group">
+                      <label>Phone Number</label>
+                      <input
+                        name="phone"
+                        type="number"
+                        value={bookingDetails.phone}
+                        placeholder="Enter your phone number"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <label>Addres</label>
-                    <input name="address" type="text" value={bookingDetails.address} placeholder="Enter your address" onChange={handleInputChange} required></input>
+                    <div className="form-group">
+                      <label>Address</label>
+                      <input
+                        name="address"
+                        type="text"
+                        value={bookingDetails.address}
+                        placeholder="Enter your address"
+                        onChange={handleInputChange}
+                        className="form-control"
+                        required
+                      />
+                    </div>
 
-                    <button type="submit"
-                      style={{
-                        borderRadius: "5px",
-                        padding: "10px",
-                        marginTop: "25px",
-                        width: "150px"
-                      }}>Book Now
+                    <div style={{textAlign:'center'}}>
+                    <button
+                    style={{width:'200px'}}
+                      type="submit"
+                      class="btn btn-primary align-items-center font-weight-bold"
+                    >
+                      Book Now
                     </button>
+                    </div>
                   </form>
                 </div>
-
               </div>
             </div>
-            <div class="col-lg-4 col-xl-3" >
+            <div class="col-lg-4 col-xl-3">
               <div class="shadow-soft bg-white rounded-sm">
                 <div class="pt-5 pb-4 px-5 border-bottom">
                   <a href="#" class="d-block mb-2">
                     <img
                       className="img-fluid rounded-sm"
                       alt="Image-Description"
+                      src={
+                        "http://127.0.0.1:8000/photo/" + packageImage
+                        
+                      }                    
                     />
                   </a>
                   {/* {eventData.name} */}
                   <div class="flex-horizontal-center text-gray-1">
-                    <i class="icon flaticon-pin-1 mr-2 font-size-15"></i>{" "}
-                    {/* {bookingData[0].location} */}
+                    {packageName}
                   </div>
                 </div>
                 <div id="basicsAccordion">
@@ -186,15 +222,18 @@ function Booking() {
 
                           <li className="d-flex justify-content-between py-2">
                             <span className="font-weight-medium">To:</span>
-                            <span className="text-secondary">xx</span>
+                            <span className="text-secondary">{formattedEndDate}</span>
                           </li>
 
                           <li className="d-flex justify-content-between py-2">
                             <span className="font-weight-medium">Period</span>
                             <span className="text-secondary">{days} days</span>
                           </li>
-
-                          
+                          <hr style={{marginBottom:'0px' ,marginTop:'0px'  , border:' 1px solid gray'}}/>
+                          <li className="d-flex justify-content-between py-2" >
+                            <span className="font-weight-medium" style={{color: '#637E4C'}}>Total Price</span>
+                            <span className="font-weight-medium" style={{color: '#637E4C', important: true }}>{Math.floor(price)} JOD</span>
+                          </li>
                         </ul>
                       </div>
                     </div>

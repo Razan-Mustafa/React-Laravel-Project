@@ -16,7 +16,7 @@ function Packages() {
   // const [selectedSpeed, setselectedSpeed] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [resultCount, setResultCount] = useState(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = 2;
   // const [packages, setPackages] = useState([]);
   const [category, setCategory] = useState([]);
 
@@ -104,7 +104,79 @@ function Packages() {
                             <div class="font-weight-bold font-size-20 text-dark mb-3  mt-3 mx-2">
                               Filter the results:
                             </div>
+
+                            <div
+                              id="cityCategoryAccordion"
+                              class="accordion rounded-0 shadow-none border-top"
+                            >
+                              <div class="border-0">
+                                <div
+                                  class="card-collapse"
+                                  id="cityCategoryHeadingOne"
+                                >
+                                  <h3 class="mb-0">
+                                    <button
+                                      type="button"
+                                      class="btn btn-link btn-block card-btn py-2 px-5 text-lh-3 collapsed"
+                                      data-toggle="collapse"
+                                      data-target="#cityCategoryOne"
+                                      aria-expanded="false"
+                                      aria-controls="cityCategoryOne"
+                                    >
+                                      <span class="row align-items-center">
+                                         <span class="font-weight-bold font-size-19 text-dark mb-3">
+                                            Categories
+                                         </span>
+                                        <span class="col-3 text-right">
+                                          <span class="card-btn-arrow">
+                                            <span class="fas fa-chevron-down small"></span>
+                                          </span>
+                                        </span>
+                                      </span>
+                                    </button>
+                                  </h3>
+                                </div>
+                                <div
+                                  id="cityCategoryOne"
+                                  class="collapse show"
+                                  aria-labelledby="cityCategoryHeadingOne"
+                                  data-parent="#cityCategoryAccordion"
+                                >
+                                  {category.map((category) => (
+                                    <div
+                                      class="card-body pt-0 mt-1 px-5 pb-4"
+                                      key={category.id}
+                                    >
+                                      <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                        <div class="custom-control custom-radio">
+                                          <input
+                                            type="radio"
+                                            class="custom-control-input"
+                                            id={`brand${category.id}`}
+                                            name="cityRadio"
+                                            onClick={() =>
+                                              handleButtonClick(category.id)
+                                            }
+                                          />
+                                          <label
+                                            class="custom-control-label font-size-large"
+                                            for={`brand${category.id}`}
+                                          >
+                                            {category.name} - ({" "}
+                                            {[category.packages.length]} items)
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+
                             <div className="search-container px-4 w-100">
+                              <span class="font-weight-bold font-size-19 text-dark mb-3">
+                                Search
+                              </span>
                               <input
                                 type="text"
                                 placeholder="Search by name..."
@@ -112,10 +184,11 @@ function Packages() {
                                 onChange={handleSearchInputChange}
                                 className="search-input"
                               />
-                              {/* <i className="fa fa-search search-icon"></i> */}
                             </div>
                             <div className="d-block  text-left font-weight-normal mb-2 mt-3  px-4 font-size-18">
-                              Price Range ($)
+                              <span class="font-weight-bold font-size-19 text-dark mb-3">
+                                Price
+                              </span>
                             </div>
                             <div className="  px-4">
                               <div className="input-group">
@@ -138,9 +211,9 @@ function Packages() {
                           </div>
 
                           <div className="px-4 mb-3">
-                            <label className="d-block text-left font-weight-normal mb-2  font-size-18">
+                            <span class="font-weight-bold font-size-19 text-dark mb-3">
                               Number of person:
-                            </label>
+                            </span>
                             <select
                               className=" w-100  border broder-color-2 p-1"
                               onChange={(e) => setSelectedUsers(e.target.value)}
@@ -156,76 +229,6 @@ function Packages() {
                               <option value="7">7 person</option>
                               <option value="8">8 person</option>
                             </select>
-                          </div>
-                     
-                        </div>
-                      </div>
-
-                      <div
-                        id="cityCategoryAccordion"
-                        class="accordion rounded-0 shadow-none border-top"
-                      >
-                        <div class="border-0">
-                          <div
-                            class="card-collapse"
-                            id="cityCategoryHeadingOne"
-                          >
-                            <h3 class="mb-0">
-                              <button
-                                type="button"
-                                class="btn btn-link btn-block card-btn py-2 px-5 text-lh-3 collapsed"
-                                data-toggle="collapse"
-                                data-target="#cityCategoryOne"
-                                aria-expanded="false"
-                                aria-controls="cityCategoryOne"
-                              >
-                                <span class="row align-items-center">
-                                  <span class="col-9">
-                                    <span class="font-weight-bold font-size-19 text-dark mb-3">
-                                      Categories
-                                    </span>
-                                  </span>
-                                  <span class="col-3 text-right">
-                                    <span class="card-btn-arrow">
-                                      <span class="fas fa-chevron-down small"></span>
-                                    </span>
-                                  </span>
-                                </span>
-                              </button>
-                            </h3>
-                          </div>
-                          <div
-                            id="cityCategoryOne"
-                            class="collapse show"
-                            aria-labelledby="cityCategoryHeadingOne"
-                            data-parent="#cityCategoryAccordion"
-                          >
-                            {category.map((category) => (
-                              <div
-                                class="card-body pt-0 mt-1 px-5 pb-4"
-                                key={category.id}
-                              >
-                                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                  <div class="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      class="custom-control-input"
-                                      id={`brand${category.id}`}
-                                      name="cityRadio"
-                                      onClick={() =>
-                                        handleButtonClick(category.id)
-                                      }
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for={`brand${category.id}`}
-                                    >
-                                      {category.name}  -  ( {[category.packages.length]} items)
-                                     </label>
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
                           </div>
                         </div>
                       </div>
@@ -267,9 +270,9 @@ function Packages() {
                                           className="js-slide bg-img-hero min-height-300 "
                                           style={{
                                             backgroundImage: `url(${packages.image})`,
-                                            width: "340px",
-                                            height: "280px",
-                                            backgroundSize: "100% 100%",
+                                            // width: "340px",
+                                            // height: "280px",
+                                            // backgroundSize: "100% 100%",
                                           }}
                                         ></div>
                                       </a>
@@ -278,7 +281,6 @@ function Packages() {
                                 </div>
                                 <div className="col-md-7 col-xl-5 flex-horizontal-center ">
                                   <div className="w-100 position-relative m-4 ms-auto">
-                                    
                                     <a href="../packages/packages-single-v1.html">
                                       <span className="font-weight-bold font-size-17 text-dark d-flex mb-1">
                                         {packages.name}
@@ -288,9 +290,7 @@ function Packages() {
                                       <a
                                         href="../packages/packages-single-v1.html"
                                         className="d-block mb-1"
-                                      >
-                                       
-                                      </a>
+                                      ></a>
                                       <div className="mb-3">
                                         <div className="d-inline-flex align-items-center font-size-14 text-lh-1 text-primary">
                                           <div className="green-lighter mr-2">
@@ -308,7 +308,6 @@ function Packages() {
                                       <div className="d-flex">
                                         <div className="mr-5">
                                           <ul className="list-unstyled mb-0">
-                                           
                                             <li className="media mb-2 text-gray-1 align-items-center">
                                               <small className="mr-3">
                                                 <small className="flaticon-user font-size-16"></small>
@@ -327,8 +326,10 @@ function Packages() {
                                                   <small className="fa fa-info font-size-16"></small>
                                                 </small>
                                                 <div className="media-body font-size-1.5">
-
-                                                  <strong> {packages.description} </strong>
+                                                  <strong>
+                                                    {" "}
+                                                    {packages.description}{" "}
+                                                  </strong>
                                                 </div>
                                               </li>
                                             </ul>

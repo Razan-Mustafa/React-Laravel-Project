@@ -53,12 +53,13 @@ console.log(id);
   }
 
   // Navigation
-  const handleNavigate = () => {
+  const handleNavigate = (e) => {
+    e.preventDefault();
     const numberOfDays = selectedDays;
     const price = updatedPrice;
     const selectedDate = document.getElementById("startDate").value;
     // const packageName = details.name;
-    const url = `/booking/${numberOfDays}/${selectedDate}/${price}/${details.name}/${details.image}/${details.id}`;
+    const url = `/booking/${numberOfDays}/${selectedDate}/${price}/${details.name}/${details.image.slice(1)}/${details.id}`;
 
     navigate(url);
   };
@@ -128,7 +129,7 @@ console.log(id);
                   </select>
 
                   <br />
-
+                  <form onSubmit={handleNavigate}>
                   <h6 class="d-block text-gray-1 font-weight-normal mb-0 text-left">
                     Starting Date
                   </h6>
@@ -155,13 +156,15 @@ console.log(id);
                     Total Price: {Math.floor(updatedPrice)} <br />
                   </h4>
                   <div class="text-center">
-                    <a
-                      onClick={handleNavigate}
+                    <button
+                      type="submit"
                       class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
                     >
                       Book Now
-                    </a>
+                    </button>
                   </div>
+                  </form>
+
                 </div>
               </div>
               {/* <div class="border border-color-7 rounded p-4 mb-5">
