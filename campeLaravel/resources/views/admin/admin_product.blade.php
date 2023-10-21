@@ -93,6 +93,13 @@
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <div class="card">
                         <div class="card-header d-flex justify-content-between m-2">
 
@@ -120,8 +127,8 @@
                                         @foreach ($adminProducts as $product)
                                             <tr>
                                                 <td>
-                                                    <img src="../image/{{ $product->image }}" alt="{{ $product->name }}"
-                                                        width="60px" height="60px">
+                                                    <img src="{{ asset('photo' . $product->image) }}"
+                                                        alt="{{ $product->name }}" width="60px" height="60px">
                                                 </td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ $product->package->name }}</td>
