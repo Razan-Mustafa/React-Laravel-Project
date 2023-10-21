@@ -53,7 +53,7 @@ function Reviews({
 
   useEffect(() => {
     fetchReviews(packageId);
-  }, [packageId, fetchReviews]);
+  }, [packageId, fetchReviews , addReview]);
 
   const toggleEditReview = (reviewId, currentComment, rate) => {
     setEditingReviewId(editingReviewId === reviewId ? null : reviewId);
@@ -85,7 +85,7 @@ function Reviews({
 
   function calculateAverageRate(reviews) {
     if (reviews.length === 0) {
-      return 0; // Return 0 if there are no reviews to avoid division by zero.
+      return 0; 
     }
 
     const totalRate = reviews.reduce((accumulator, review) => accumulator + review.rate, 0);
@@ -123,7 +123,7 @@ function Reviews({
                             <div className="d-flex align-items-center justify-content-between">
                               <div className="d-block d-sm-flex align-items-center">
                                 <div className="sigma_author-block">
-                                  <h5>{review.user.name}</h5>
+                                <h5>{review.user?.name}</h5>
                                 </div>
                                 <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
                                   {Rating(review.rate)}
