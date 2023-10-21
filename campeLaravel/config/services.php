@@ -29,5 +29,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+   
+    
+        'google' => [
+            'client_id' => env('115935591923-dpf5umtomhdjuocg32vs24h51h6b9al8.apps.googleusercontent.com'),
+            'client_secret' => env('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'),
+            'redirect' => env('http://localhost:3000/auth/google'),
+        ],
+    
+ 
 
 ];

@@ -14,7 +14,7 @@
   
   }
   
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
   .gradient-form {
   height: 150vh !important;
   }
@@ -24,8 +24,7 @@
   border-top-right-radius: .2rem;
   border-bottom-right-radius: .2rem;
   }
-  }
-
+  } */
 
   .profile{
 

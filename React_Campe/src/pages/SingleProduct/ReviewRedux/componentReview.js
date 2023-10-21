@@ -83,6 +83,19 @@ function Reviews({
     }
   };
 
+  function calculateAverageRate(reviews) {
+    if (reviews.length === 0) {
+      return 0; // Return 0 if there are no reviews to avoid division by zero.
+    }
+
+    const totalRate = reviews.reduce(
+      (accumulator, review) => accumulator + review.rate,
+      0
+    );
+    return totalRate / reviews.length;
+  }
+  const average = calculateAverageRate(reviews);
+
   return (
     <div className="section sigma_post-details">
       <div className="container">
@@ -132,6 +145,7 @@ function Reviews({
                                     style={{
                                       background: "none",
                                       padding: "0",
+                                      border: "none",
                                     }}
                                   >
                                     <i
@@ -150,6 +164,8 @@ function Reviews({
                                     style={{
                                       background: "none",
                                       padding: "0",
+                                      border: "none",
+
                                     }}
                                   >
                                     <i
@@ -326,6 +342,8 @@ function Reviews({
                         <button
                           type="button"
                           className="sigma_btn"
+                          class="btn btn-primary align-items-center font-weight-bold"
+
                           onClick={() => setShowAllComments(true)}
                           style={{
                             borderRadius: "5px",
@@ -343,6 +361,8 @@ function Reviews({
                         <button
                           type="button"
                           className="sigma_btn"
+                          class="btn btn-primary align-items-center font-weight-bold"
+
                           onClick={() => setShowAllComments(false)}
                           style={{
                             borderRadius: "5px",
@@ -407,7 +427,10 @@ function Reviews({
                         ></textarea>
                       </div>
                       <div style={{ textAlign: "right" }}>
-                        <button type="submit"
+                        <button                     
+                          class="btn btn-primary align-items-center font-weight-bold"
+
+                         type="submit"
                           style={{
                             borderRadius: "5px",
                             padding: "10px",
