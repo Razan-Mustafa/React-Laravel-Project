@@ -175,6 +175,8 @@ import './style.css'
             try {
                 const response = await axios.get(`http://127.0.0.1:8000/api/products/${package_id}`);
                 setProducts(response.data);
+                
+                
             } catch (error) {
                 console.error('Error fetching product details:', error);
             }
@@ -188,8 +190,8 @@ import './style.css'
     useEffect(() => {
         showSlides(slideIndex);
     }, [products, slideIndex]);
-
-
+    console.log('my products');
+    console.log(products);
     const showSlides = (n) => {
         const slides = document.getElementsByClassName('mySlides');
         const dots = document.getElementsByClassName('demo');
