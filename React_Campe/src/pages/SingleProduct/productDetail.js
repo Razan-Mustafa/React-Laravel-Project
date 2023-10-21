@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Rating } from "../../helper";
-import "./ReviewRedux/style.css";
+// import "./ReviewRedux/style.css";
 import Slider from './products_slider/products_slider';
 
 
@@ -10,11 +10,12 @@ const ProductDetails = ({ id }) => {
   const [details, setDetails] = useState([]);
   const [rating, setRating] = useState([]);
   const [averageRating, setAverageRating] = useState(2);
-
+  console.log('idddddddddddddddddddddddddd');
+console.log(id);
   useEffect(() => {
     const getProductDetails = () => {
       axios
-        .get(`http://127.0.0.1:8000/api/packages/1`) 
+        .get(`http://127.0.0.1:8000/api/packages/${id}`) 
         .then((response) => {
             setDetails(response.data[0])
             console.log(response.data[0].name)
@@ -29,8 +30,10 @@ const ProductDetails = ({ id }) => {
 useEffect(() => {
   const getReviews = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/reviews/1`)
+      .get(`http://127.0.0.1:8000/api/reviews/${id}`)
       .then((response) => {
+        console.log('in detaillsss');
+        console.log(response);
         const reviews = response.data;
         setRating(reviews);
 

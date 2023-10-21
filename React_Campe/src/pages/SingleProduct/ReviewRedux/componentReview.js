@@ -8,7 +8,7 @@ import { Rating } from "../../../helper";
 import "./style.css";
 
 function Reviews({
-  packageId = 1,
+  id,
   reviews,
   fetchReviews,
   addReview,
@@ -21,7 +21,7 @@ function Reviews({
   let IsLoggedIn = true;
   const [reviewText, setReviewText] = useState({
     user_id: 1,
-    package_id: 1,
+    package_id: id,
     date: new Date().toISOString().split("T")[0],
     rate: 5,
     comment: "",
@@ -52,8 +52,8 @@ function Reviews({
   };
 
   useEffect(() => {
-    fetchReviews(packageId);
-  }, [packageId, fetchReviews]);
+    fetchReviews(id);
+  }, [id, fetchReviews]);
 
   const toggleEditReview = (reviewId, currentComment, rate) => {
     setEditingReviewId(editingReviewId === reviewId ? null : reviewId);
@@ -83,16 +83,6 @@ function Reviews({
     }
   };
 
-  function calculateAverageRate(reviews) {
-    if (reviews.length === 0) {
-      return 0; // Return 0 if there are no reviews to avoid division by zero.
-    }
-
-    const totalRate = reviews.reduce((accumulator, review) => accumulator + review.rate, 0);
-    return totalRate / reviews.length;
-  }
-  const average = calculateAverageRate(reviews);
-
   return (
     <div className="section sigma_post-details">
       <div className="container">
@@ -105,9 +95,8 @@ function Reviews({
                   <div id="reviews">
                     <h4>Review</h4>
 
-                    {reviews
-                      .slice(0, showAllComments ? reviews.length : 2)
-                      .map((review) => (
+                    {reviews && reviews.length > 0 ? (
+                      reviews.slice(0, showAllComments ? reviews.length : 2).map((review) => (
                         <div
                           className="sigma_testimonial style-14"
                           key={review.id}
@@ -123,7 +112,7 @@ function Reviews({
                             <div className="d-flex align-items-center justify-content-between">
                               <div className="d-block d-sm-flex align-items-center">
                                 <div className="sigma_author-block">
-                                  <h5>{review.user.name}</h5>
+                                <h5>{review.user && review.user.name}</h5>
                                 </div>
                                 <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
                                   {Rating(review.rate)}
@@ -216,7 +205,122 @@ function Reviews({
                             )}
                           </div>
                         </div>
-                      ))}
+                      ))
+                    ) : (
+                      <p>No reviews available</p>
+                    )}
+
+                    {/* {reviews
+                      .slice(0, showAllComments ? reviews.length : 2)
+                      .map((review) => (
+                        <div
+                          className="sigma_testimonial style-14"
+                          key={review.id}
+                        >
+                          <div
+                            className="sigma_testimonial-thumb"
+                            key={review.id}
+                          ></div>
+                          <div
+                            className="sigma_testimonial-body"
+                            key={review.id}
+                          >
+                            <div className="d-flex align-items-center justify-content-between">
+                              <div className="d-block d-sm-flex align-items-center">
+                                <div className="sigma_author-block">
+                                  <h5>{review.user.name}</h5>
+                                </div>
+                                <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
+                                  {Rating(review.rate)}
+                                  <span className="ml-3">
+                                    ({review.rate}/5)
+                                  </span>
+                                </div>
+                              </div>
+
+                              
+                              {IsLoggedIn && review.user_id === 1 && (
+                                <div style={{ textAlign: "right" }}>
+                                  <button
+                                    onClick={() =>
+                                      confirmDeleteReview(review.id)
+                                    }
+                                    style={{
+                                      background: "none",
+                                      padding: "0",
+                                    }}
+                                  >
+                                    <i
+                                      className="fas fa-trash-alt"
+                                      style={{ color: "#637E4C" }}
+                                    ></i>
+                                  </button>
+                                  <button
+                                    onClick={() =>
+                                      toggleEditReview(
+                                        review.id,
+                                        review.comment,
+                                        review.rate
+                                      )
+                                    }
+                                    style={{
+                                      background: "none",
+                                      padding: "0",
+                                    }}
+                                  >
+                                    <i
+                                      className="fas fa-edit"
+                                      style={{ color: "#637E4C" }}
+                                    ></i>
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                            <span className="sigma_testimonial-date">
+                              {review.date}
+                            </span>
+                            {editingReviewId === review.id ? (
+                              <div>
+                                <label>Rating:</label>
+                                <select
+                                  name="rateupdate"
+                                  value={reviewText.rateupdate}
+                                  onChange={(e) =>
+                                    handleInputChange(e, "rateupdate")
+                                  }
+                                >
+                                  <option value={1}>1</option>
+                                  <option value={2}>2</option>
+                                  <option value={3}>3</option>
+                                  <option value={4}>4</option>
+                                  <option value={5}>5</option>
+                                </select>
+                                <textarea
+                                  rows="4"
+                                  name="commentupdate"
+                                  value={reviewText.commentupdate}
+                                  onChange={(e) =>
+                                    handleInputChange(e, "commentupdate")
+                                  }
+                                  required
+                                ></textarea>
+                                <button
+                                  onClick={() => saveEditedReview(review.id)}
+                                  style={{
+                                    borderRadius: "5px",
+                                    padding: "7px",
+                                    marginTop: "5px",
+                                  }}
+                                >
+                                  Save
+                                </button>
+                              </div>
+                            ) : (
+                              <p>"{review.comment}"</p>
+                            )}
+                          </div>
+                        </div>
+                      ))} */}
                     {!showAllComments && (
                       <div style={{ textAlign: "right" }}>
                         <button

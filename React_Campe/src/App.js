@@ -40,7 +40,8 @@ function App() {
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/booking" element={<Booking />} />
+        {/* <Route path="/booking" element={<Booking />} /> */}
+        <Route path="/booking/:days/:date/:price/:packageName/:packageImage/:packageId" element={<Booking />} />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
         <Route path="/about" element={<Aboutus />} />

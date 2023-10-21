@@ -62,6 +62,7 @@ class BookingController extends Controller
         $booking->user_id = $request->user_id;
         $booking->package_id = $request->package_id;
         $booking->save();
+        return response()->json($booking);
     }
 
     /**
