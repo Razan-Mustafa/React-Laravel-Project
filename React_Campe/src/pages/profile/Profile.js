@@ -8,6 +8,8 @@ export default function Profile() {
   const imageInput = useRef(null);
   // const user_id = sessionStorage.getItem("user_id");
   const id = localStorage.getItem("user_id");
+  console.log('ererererererererererer');
+  console.log(id);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -187,6 +189,8 @@ export default function Profile() {
       .get(`http://127.0.0.1:8000/api/book/${id}`)
       .then((response) => {
         setBookings(response.data);
+        console.log('kkkkkkkkkkkkkkkkkkkkkk');
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -438,7 +442,6 @@ export default function Profile() {
                     <img
 
                       src={`http://127.0.0.1:8000/photo/${booking.package.image}` }
-                    style={{ width:"100px" }}
                       alt={booking.package.name}
                     />
                   ) : (
