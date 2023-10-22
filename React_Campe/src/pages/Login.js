@@ -64,11 +64,11 @@ const Login = () => {
           <div className="container py-2 h-100">
             <div
               className="row d-flex justify-content-center align-items-center h-100"
-              style={{ height: "90vh" }}
+            
             >
               <div className="col-xl-10">
-                <div className="card rounded-3 text-black">
-                  <div className="row g-0" style={{ height: "90vh" }}>
+                <div className="card rounded-3 text-black mb-7 h-100">
+                  <div className="row g-0" style={{ height: "89vh" }}>
                     <div
                       className="col-lg-6 mt-5"
                       style={{ backgroundColor: "rgba(238, 238, 238, 0.02)" }}
@@ -160,12 +160,12 @@ const Login = () => {
                  
 <img src="https://i.pinimg.com/564x/7a/8f/d2/7a8fd229c2cff7b54f68c2b024f0e390.jpg" height="100%" width="100%" /> */}
 
-                    <div className="col-lg-6 " style={{ height: "736px" }}>
+                    <div className="col-lg-6" style={{ height: "720px" }}>
                       <img
                         src="https://i.pinimg.com/564x/61/d5/e8/61d5e805e7c3bb5a5453c374480a1884.jpg"
-                        height="91%"
+                        height="86%"
                         width="100%"
-                        className="mt-1"
+                       
                       />
                     </div>
                   </div>

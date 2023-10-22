@@ -8819,7 +8819,7 @@ input[type="button"].btn-block {
   /* border: 1px solid green; */
   border-bottom: 1px solid #999;
   border-radius: 0.3125rem;
-  padding: 10px 0;
+  /* padding: 6px 0; */
 }
 
 .card > hr {

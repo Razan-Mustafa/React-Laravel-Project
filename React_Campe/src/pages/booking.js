@@ -7,7 +7,7 @@ function Booking() {
   const navigate = useNavigate();
   const { days, date, price, packageName, packageImage, packageId } =
     useParams();
-  const user_id = 1;
+  const user_id = localStorage.getItem("user_id");
   // const [userDetails, setUserDetails] = useState([]);
   const [bookingDetails, setBookingDetails] = useState({
     name: "",
