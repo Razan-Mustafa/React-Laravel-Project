@@ -188,11 +188,11 @@ function CounterComponent() {
       setPackagesCount(totalPackagesCount);
     });
 
-    axios.get("http://127.0.0.1:8000/api/products").then((response) => {
+    axios.get("http://127.0.0.1:8000/api/users").then((response) => {
       setUsersCount(response.data.length);
     });
 
-    axios.get("http://127.0.0.1:8000/api/users").then((response) => {
+    axios.get("http://127.0.0.1:8000/api/products").then((response) => {
       setProductsCount(response.data.length);
     });
   }, []);
